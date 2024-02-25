@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_easy_barcode/config/constant.dart';
 import 'package:flutter_easy_barcode/core/localization.dart';
+import 'package:flutter_easy_barcode/core/navigator.dart';
 import 'package:flutter_easy_barcode/feature/home_page/model/home_page_card_type.dart';
+import 'package:flutter_easy_barcode/feature/scan_barcode/presentation/pages/scan_barcode.dart';
 import 'package:flutter_easy_barcode/ui_kit/common_widgets.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -14,14 +16,21 @@ class HomeCardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double radius = 10;
+
     String title = '';
     String iconPath = svgPath;
-    if (type == HomePageCardType.createBarcode) {
-      title = Strings.instance.appLocalization.createBarcode;
-      iconPath += 'create_barcode.svg';
-    } else if (type == HomePageCardType.scanBarcode) {
-      title = Strings.instance.appLocalization.scanBarcode;
-      iconPath += 'scan_barcode.svg';
+    Function(BuildContext context) onClick;
+    switch (type) {
+      case HomePageCardType.createBarcode:
+        title = Strings.instance.appLocalization.createBarcode;
+        iconPath += 'create_barcode.svg';
+        onClick = _onCreateBarcodeClick;
+        break;
+      case HomePageCardType.scanBarcode:
+        title = Strings.instance.appLocalization.scanBarcode;
+        iconPath += 'scan_barcode.svg';
+        onClick = _onScanBarcodeClick;
+        break;
     }
 
     return Expanded(
@@ -35,14 +44,17 @@ class HomeCardWidget extends StatelessWidget {
           ),
           child: InkWell(
             borderRadius: BorderRadius.circular(radius),
-            onTap: () {},
+            onTap: () => onClick(context),
             child: Padding(
               padding: const EdgeInsets.fromLTRB(15, 20, 15, 20),
               child: Column(
                 children: [
                   Text(
                     title,
-                    style: Theme.of(context).textTheme.titleMedium?.copyWith(color: Colors.white),
+                    style: Theme.of(context)
+                        .textTheme
+                        .titleMedium
+                        ?.copyWith(color: Colors.white),
                   ),
                   const SizedBox(
                     height: 10,
@@ -51,7 +63,8 @@ class HomeCardWidget extends StatelessWidget {
                     iconPath,
                     height: 25,
                     width: 25,
-                    color: Colors.white,
+                    colorFilter:
+                        const ColorFilter.mode(Colors.white, BlendMode.srcIn),
                   ),
                 ],
               ),
@@ -60,5 +73,13 @@ class HomeCardWidget extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void _onCreateBarcodeClick(BuildContext context) {
+
+  }
+
+  void _onScanBarcodeClick(BuildContext context) {
+    pushSlideRoute(context, const ScanBarcodePage(), 'ScanBarcodePage');
   }
 }

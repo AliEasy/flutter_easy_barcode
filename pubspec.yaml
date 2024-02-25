@@ -34,6 +34,9 @@ flutter:
     - assets/svg/create_barcode.svg
     - assets/svg/scan_barcode.svg
 
+    - assets/app_icon/app_icon.png
+    - assets/app_icon/app_icon.svg
+
   fonts:
     - family: sans
       fonts:

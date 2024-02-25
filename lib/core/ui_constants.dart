@@ -1,0 +1,1 @@
+double dialogCorners = 15;

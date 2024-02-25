@@ -19,6 +19,9 @@ ThemeData theme() {
       titleMedium: TextStyle(
         fontSize: 16,
       ),
+      labelMedium: TextStyle(
+        fontSize: 14,
+      ),
     ),
     appBarTheme: AppBarTheme(
       color: bgColor,

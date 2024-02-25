@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 
 class QRScannerOverlay extends StatelessWidget {
-  const QRScannerOverlay({super.key, required this.overlayColour});
+  const QRScannerOverlay({
+    super.key,
+    required this.overlayColour,
+    required this.scanArea,
+  });
 
   final Color overlayColour;
+  final Rect scanArea;
 
   @override
   Widget build(BuildContext context) {
-    double scanArea = (MediaQuery.of(context).size.width < 400 ||
-            MediaQuery.of(context).size.height < 400)
-        ? 200.0
-        : 330.0;
     return Stack(children: [
       ColorFiltered(
         colorFilter: ColorFilter.mode(
@@ -26,8 +27,8 @@ class QRScannerOverlay extends StatelessWidget {
             Align(
               alignment: Alignment.center,
               child: Container(
-                height: scanArea,
-                width: scanArea,
+                height: scanArea.height,
+                width: scanArea.width,
                 decoration: BoxDecoration(
                   color: Colors.red,
                   borderRadius: BorderRadius.circular(20),
@@ -42,8 +43,8 @@ class QRScannerOverlay extends StatelessWidget {
         child: CustomPaint(
           foregroundPainter: BorderPainter(),
           child: SizedBox(
-            width: scanArea + 25,
-            height: scanArea + 25,
+            width: scanArea.width + 25,
+            height: scanArea.height + 25,
           ),
         ),
       ),

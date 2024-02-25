@@ -2,5 +2,15 @@
   "appTitle": "آسان بارکد",
   "createBarcode": "ساخت بارکد",
   "scanBarcode": "اسکن بارکد",
+  "link": "لینک",
+  "openLinkInBrowser": "باز کردن لینک در مرورگر",
+  "linkNotDefined": "لینکی تعریف نشده است",
+  "linkIsInvalid": "لینک مورد نظر نامعتبر است",
+  "errorInOpeningLinks": "باز کردن لینک با مشکل مواجه شد",
+  "problemInOpeningLinks": "باز کردن لینک با مشکل مواجه شد",
+  "emptyValue": "مقداری وارد نشده است",
+  "successOperation": "عملیات موفق",
+  "copyLink": "کپی کردن لینک",
+  "linkCopied": "لینک مورد نظر کپی شد",
   "empty": "خالی"
 }

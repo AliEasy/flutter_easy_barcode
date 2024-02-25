@@ -10,20 +10,32 @@ class ScanBarcodePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cameraController = MobileScannerController();
+    double scanArea = (MediaQuery.of(context).size.width < 400 ||
+            MediaQuery.of(context).size.height < 400)
+        ? 200.0
+        : 330.0;
+    final scanWindow = Rect.fromCenter(
+      center: MediaQuery.of(context).size.center(Offset.zero),
+      width: scanArea,
+      height: scanArea,
+    );
     return Scaffold(
       body: Stack(
         children: [
           MobileScanner(
             controller: cameraController,
+            scanWindow: scanWindow,
             onDetect: (capture) {
               final List<Barcode> barcodes = capture.barcodes;
               for (final barcode in barcodes) {
                 debugPrint('Barcode found! ${barcode.rawValue}');
               }
             },
+
           ),
-          const QRScannerOverlay(
+          QRScannerOverlay(
             overlayColour: Colors.black12,
+            scanArea: scanWindow,
           ),
           Positioned(
             top: 50,

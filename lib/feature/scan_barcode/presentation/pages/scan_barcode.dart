@@ -5,6 +5,7 @@ import 'package:mobile_scanner/mobile_scanner.dart';
 import '../../../../configureDependencies.dart';
 import '../../../../core/localization.dart';
 import '../../../../core/navigator.dart';
+import '../../../../core/opener.dart';
 import '../../../../ui_kit/dialog.dart';
 import '../bloc/scan_barcode/scan_barcode_bloc.dart';
 import '../widgets/barcode_type_link_dialog.dart';
@@ -53,7 +54,7 @@ class ScanBarcodePage extends StatelessWidget {
                 );
                 if (!context.mounted) return;
                 context.read<ScanBarcodeBloc>().add(ScanBarcodeResetEvent());
-              } else if(state is ScanBarcodeAsPhoneState) {
+              } else if (state is ScanBarcodeAsPhoneState) {
                 await showDialogAnimatedAtBottom(
                   context: context,
                   page: BarcodeTypePhoneDialog(
@@ -62,8 +63,11 @@ class ScanBarcodePage extends StatelessWidget {
                 );
                 if (!context.mounted) return;
                 context.read<ScanBarcodeBloc>().add(ScanBarcodeResetEvent());
-              }
-              else if (state is ScanBarcodeAsEmptyState) {}
+              } else if (state is ScanBarcodeAsSmsState) {
+                await CustomOpener.openSms(state.phoneNumber, state.smsBody);
+                if (!context.mounted) return;
+                context.read<ScanBarcodeBloc>().add(ScanBarcodeResetEvent());
+              } else if (state is ScanBarcodeAsEmptyState) {}
             },
             child: Scaffold(
               body: Stack(

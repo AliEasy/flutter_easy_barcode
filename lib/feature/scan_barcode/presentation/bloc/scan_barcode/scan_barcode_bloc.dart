@@ -29,9 +29,15 @@ class ScanBarcodeBloc extends Bloc<ScanBarcodeEvent, ScanBarcodeState> {
         case BarcodeType.phone:
           emit(
             ScanBarcodeAsPhoneState(
-              phoneNumber: barcode.rawValue!
-                  .replaceAll('tel:', '')
-                  .replaceAll('Tel:', ''),
+              phoneNumber: barcode.phone!.number ?? '',
+            ),
+          );
+          break;
+        case BarcodeType.sms:
+          emit(
+            ScanBarcodeAsSmsState(
+              phoneNumber: barcode.sms!.phoneNumber ?? '',
+              smsBody: barcode.sms!.message ?? '',
             ),
           );
           break;

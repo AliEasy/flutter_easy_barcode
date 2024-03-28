@@ -48,4 +48,32 @@ class CustomOpener {
       return CustomOpenerResult.error;
     }
   }
+
+  static Future<CustomOpenerResult> openSms(String phoneNumber, String smsBody) async {
+    if (phoneNumber.isEmpty) {
+      return CustomOpenerResult.empty;
+    }
+    try {
+      final Uri dial = Uri(
+        scheme: 'sms',
+        path: phoneNumber,
+        queryParameters: <String, String>{
+          'body': Uri.encodeComponent(smsBody),
+        },
+      );
+      bool canLaunch = await canLaunchUrl(dial);
+      if (canLaunch) {
+        bool launched = await launchUrl(dial);
+        if (launched) {
+          return CustomOpenerResult.success;
+        } else {
+          return CustomOpenerResult.problem;
+        }
+      } else {
+        return CustomOpenerResult.invalid;
+      }
+    } catch (e) {
+      return CustomOpenerResult.error;
+    }
+  }
 }

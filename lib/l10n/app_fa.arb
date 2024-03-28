@@ -18,5 +18,7 @@
   "viewFullText": "نمایش کامل متن",
   "callNumber": "شماره تماس",
   "dial": "شماره گیری",
+  "dialCallNumber": "شماره گیری شماره تماس",
+  "copyCallNumber": "کپی کردن شماره تماس",
   "empty": "خالی"
 }

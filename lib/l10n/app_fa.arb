@@ -11,6 +11,12 @@
   "emptyValue": "مقداری وارد نشده است",
   "successOperation": "عملیات موفق",
   "copyLink": "کپی کردن لینک",
+  "copyText": "کپی کردن متن",
   "linkCopied": "لینک مورد نظر کپی شد",
+  "text": "متن",
+  "close": "بستن",
+  "viewFullText": "نمایش کامل متن",
+  "callNumber": "شماره تماس",
+  "dial": "شماره گیری",
   "empty": "خالی"
 }

@@ -23,6 +23,9 @@ class ScanBarcodeBloc extends Bloc<ScanBarcodeEvent, ScanBarcodeState> {
         case BarcodeType.url:
           emit(ScanBarcodeAsLinkState(link: barcode.rawValue!));
           break;
+        case BarcodeType.text:
+          emit(ScanBarcodeAsTextState(text: barcode.rawValue!));
+          break;
         default:
           emit(ScanBarcodeAsEmptyState());
       }

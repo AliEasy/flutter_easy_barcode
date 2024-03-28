@@ -9,6 +9,8 @@ import 'package:flutter_easy_barcode/feature/scan_barcode/presentation/widgets/b
 import 'package:flutter_easy_barcode/feature/scan_barcode/presentation/widgets/scanner_overlay.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 
+import '../widgets/text_type_link_dialog.dart';
+
 class ScanBarcodePage extends StatelessWidget {
   const ScanBarcodePage({super.key});
 
@@ -42,7 +44,16 @@ class ScanBarcodePage extends StatelessWidget {
                 if (!context.mounted) return;
                 context.read<ScanBarcodeBloc>().add(ScanBarcodeResetEvent());
               } else if (state is ScanBarcodeAsTextState) {
-              } else if (state is ScanBarcodeAsEmptyState) {}
+                await showDialogAnimatedAtBottom(
+                  context: context,
+                  page: BarcodeTypeTextDialog(
+                    text: state.text,
+                  ),
+                );
+                if (!context.mounted) return;
+                context.read<ScanBarcodeBloc>().add(ScanBarcodeResetEvent());
+              }
+              else if (state is ScanBarcodeAsEmptyState) {}
             },
             child: Scaffold(
               body: Stack(

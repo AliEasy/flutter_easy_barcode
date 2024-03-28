@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_easy_barcode/core/localization.dart';
-import 'package:flutter_easy_barcode/feature/home_page/model/home_page_card_type.dart';
-import 'package:flutter_easy_barcode/feature/home_page/presentation/widgets/home_card.dart';
+
+import '../../../../core/localization.dart';
+import '../../model/home_page_card_type.dart';
+import '../widgets/home_card.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});

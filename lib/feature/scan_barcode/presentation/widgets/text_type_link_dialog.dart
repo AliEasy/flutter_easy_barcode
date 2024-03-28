@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_easy_barcode/core/localization.dart';
-import 'package:flutter_easy_barcode/core/navigator.dart';
-import 'package:flutter_easy_barcode/core/ui_constants.dart';
-import 'package:flutter_easy_barcode/feature/scan_barcode/presentation/widgets/view_full_text_dialog.dart';
-import 'package:flutter_easy_barcode/ui_kit/toast.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_easy_barcode/feature/scan_barcode/presentation/widgets/view_full_text_dialog.dart';
+
+import '../../../../core/localization.dart';
+import '../../../../core/navigator.dart';
+import '../../../../core/ui_constants.dart';
+import '../../../../ui_kit/toast.dart';
 
 class BarcodeTypeTextDialog extends StatelessWidget {
   final String text;

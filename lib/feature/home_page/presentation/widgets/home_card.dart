@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_easy_barcode/config/constant.dart';
-import 'package:flutter_easy_barcode/core/localization.dart';
-import 'package:flutter_easy_barcode/core/navigator.dart';
-import 'package:flutter_easy_barcode/feature/home_page/model/home_page_card_type.dart';
-import 'package:flutter_easy_barcode/feature/scan_barcode/presentation/pages/scan_barcode.dart';
-import 'package:flutter_easy_barcode/ui_kit/common_widgets.dart';
 import 'package:flutter_svg/svg.dart';
+
+import '../../../../config/constant.dart';
+import '../../../../core/localization.dart';
+import '../../../../core/navigator.dart';
+import '../../../../ui_kit/common_widgets.dart';
+import '../../../scan_barcode/presentation/pages/scan_barcode.dart';
+import '../../model/home_page_card_type.dart';
 
 class HomeCardWidget extends StatelessWidget {
   final HomePageCardType type;
@@ -75,9 +76,7 @@ class HomeCardWidget extends StatelessWidget {
     );
   }
 
-  void _onCreateBarcodeClick(BuildContext context) {
-
-  }
+  void _onCreateBarcodeClick(BuildContext context) {}
 
   void _onScanBarcodeClick(BuildContext context) {
     pushSlideRoute(context, const ScanBarcodePage(), 'ScanBarcodePage');

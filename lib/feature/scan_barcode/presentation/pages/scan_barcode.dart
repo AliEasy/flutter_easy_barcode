@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_easy_barcode/configureDependencies.dart';
-import 'package:flutter_easy_barcode/ui_kit/dialog.dart';
-import 'package:flutter_easy_barcode/core/localization.dart';
-import 'package:flutter_easy_barcode/core/navigator.dart';
-import 'package:flutter_easy_barcode/feature/scan_barcode/presentation/bloc/scan_barcode/scan_barcode_bloc.dart';
-import 'package:flutter_easy_barcode/feature/scan_barcode/presentation/widgets/barcode_type_link_dialog.dart';
-import 'package:flutter_easy_barcode/feature/scan_barcode/presentation/widgets/scanner_overlay.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 
+import '../../../../configureDependencies.dart';
+import '../../../../core/localization.dart';
+import '../../../../core/navigator.dart';
+import '../../../../ui_kit/dialog.dart';
+import '../bloc/scan_barcode/scan_barcode_bloc.dart';
+import '../widgets/barcode_type_link_dialog.dart';
 import '../widgets/phone_type_link_dialog.dart';
+import '../widgets/scanner_overlay.dart';
 import '../widgets/text_type_link_dialog.dart';
 
 class ScanBarcodePage extends StatelessWidget {

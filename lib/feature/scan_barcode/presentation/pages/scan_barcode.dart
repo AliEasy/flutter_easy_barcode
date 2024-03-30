@@ -6,7 +6,7 @@ import '../../../../configureDependencies.dart';
 import '../../../../core/localization.dart';
 import '../../../../core/navigator.dart';
 import '../../../../core/opener.dart';
-import '../../../../core/uikit/dialog.dart';
+import '../../../../core/uikit/dialog/dialog.dart';
 import '../bloc/scan_barcode/scan_barcode_bloc.dart';
 import '../widgets/barcode_type_link_dialog.dart';
 import '../widgets/phone_type_link_dialog.dart';

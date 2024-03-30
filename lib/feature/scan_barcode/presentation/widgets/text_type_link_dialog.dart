@@ -5,7 +5,7 @@ import 'package:flutter_easy_barcode/feature/scan_barcode/presentation/widgets/v
 import '../../../../core/localization.dart';
 import '../../../../core/navigator.dart';
 import '../../../../core/ui_constants.dart';
-import '../../../../ui_kit/toast.dart';
+import '../../../../core/uikit/toast.dart';
 
 class BarcodeTypeTextDialog extends StatelessWidget {
   final String text;

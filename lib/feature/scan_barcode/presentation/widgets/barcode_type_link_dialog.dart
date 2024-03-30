@@ -7,7 +7,7 @@ import '../../../../core/localization.dart';
 import '../../../../core/navigator.dart';
 import '../../../../core/opener.dart';
 import '../../../../core/ui_constants.dart';
-import '../../../../ui_kit/toast.dart';
+import '../../../../core/uikit/toast.dart';
 
 class BarcodeTypeLinkDialog extends StatelessWidget {
   final String link;

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_easy_barcode/config/theme.dart';
+import 'package:flutter_easy_barcode/core/config/theme/theme.dart';
 import 'package:flutter_easy_barcode/configureDependencies.dart';
 import 'package:flutter_easy_barcode/core/localization.dart';
 import 'package:flutter_easy_barcode/feature/home_page/presentation/pages/home.dart';

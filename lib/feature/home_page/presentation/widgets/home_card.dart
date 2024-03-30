@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../../../config/constant.dart';
+import '../../../../common/util/assets_svg_helper.dart';
 import '../../../../core/localization.dart';
 import '../../../../core/navigator.dart';
-import '../../../../ui_kit/common_widgets.dart';
+import '../../../../core/uikit/common_widgets.dart';
 import '../../../scan_barcode/presentation/pages/scan_barcode.dart';
 import '../../model/home_page_card_type.dart';
 
@@ -19,17 +19,17 @@ class HomeCardWidget extends StatelessWidget {
     double radius = 10;
 
     String title = '';
-    String iconPath = svgPath;
+    String iconPath = '';
     Function(BuildContext context) onClick;
     switch (type) {
       case HomePageCardType.createBarcode:
         title = Strings.instance.appLocalization.createBarcode;
-        iconPath += 'create_barcode.svg';
+        iconPath += AssetsSvgHelper.createBarcode;
         onClick = _onCreateBarcodeClick;
         break;
       case HomePageCardType.scanBarcode:
         title = Strings.instance.appLocalization.scanBarcode;
-        iconPath += 'scan_barcode.svg';
+        iconPath += AssetsSvgHelper.scanBarcode;
         onClick = _onScanBarcodeClick;
         break;
     }

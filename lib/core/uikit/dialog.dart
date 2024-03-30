@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
-showDialogAnimatedAtBottom(
-    {required BuildContext context,
-    required Widget page,
-    bool closable = true}) async {
+showDialogAnimatedAtBottom({
+  required BuildContext context,
+  required Widget page,
+  bool closable = true,
+}) async {
   await showGeneralDialog(
     context: context,
     pageBuilder: (ctx, a1, a2) {

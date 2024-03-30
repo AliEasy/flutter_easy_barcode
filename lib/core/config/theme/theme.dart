@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_easy_barcode/config/constant.dart';
 
 ThemeData theme() {
   Color bgColor = const Color(0XFFFCFFFD);
@@ -10,7 +9,7 @@ ThemeData theme() {
       background: bgColor,
     ),
     scaffoldBackgroundColor: bgColor,
-    fontFamily: mainFontFamily,
+    fontFamily: 'sans',
     textTheme: const TextTheme(
       titleLarge: TextStyle(
         fontSize: 22,
@@ -29,7 +28,7 @@ ThemeData theme() {
       centerTitle: true,
       titleTextStyle: TextStyle(
         color: const Color(0XFF020D19),
-        fontFamily: mainFontFamily,
+        fontFamily: 'sans',
         fontSize: 22,
       ),
     ),

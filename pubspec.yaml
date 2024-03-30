@@ -39,13 +39,18 @@ flutter:
   generate: true
 
   assets:
-    - assets/svg/create_barcode.svg
-    - assets/svg/scan_barcode.svg
-
-    - assets/app_icon/app_icon.png
-    - assets/app_icon/app_icon.svg
+    - assets/svg/
+    - assets/app_icon/
+    - assets/splash/
 
   fonts:
     - family: sans
       fonts:
        - asset: assets/font/iran_sans.ttf
+
+flutter_native_splash:
+  color: "#ffffff"
+  image: assets/splash/splash.png
+  android_12:
+    color: "#ffffff"
+    image: assets/splash/splash.png

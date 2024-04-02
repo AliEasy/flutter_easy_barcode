@@ -44,9 +44,31 @@ flutter:
     - assets/splash/
 
   fonts:
-    - family: sans
+    - family: Vazir
       fonts:
-       - asset: assets/font/iran_sans.ttf
+        - asset: assets/font/vazir/vazir_bold.ttf
+          weight: 700
+        - asset: assets/font/vazir/vazir_regular.ttf
+          weight: 600
+        - asset: assets/font/vazir/vazir_medium.ttf
+          weight: 500
+        - asset: assets/font/vazir/vazir_light.ttf
+          weight: 300
+        - asset: assets/font/vazir/vazir_thin.ttf
+          weight: 100
+
+    - family: VazirFarsi
+      fonts:
+        - asset: assets/font/vazir_farsi/vazir_bold.ttf
+          weight: 700
+        - asset: assets/font/vazir_farsi/vazir_regular.ttf
+          weight: 600
+        - asset: assets/font/vazir_farsi/vazir_medium.ttf
+          weight: 500
+        - asset: assets/font/vazir_farsi/vazir_light.ttf
+          weight: 300
+        - asset: assets/font/vazir_farsi/vazir_thin.ttf
+          weight: 100
 
 flutter_native_splash:
   color: "#ffffff"

@@ -1,15 +1,28 @@
 part of 'scan_barcode_bloc.dart';
 
-abstract class ScanBarcodeEvent {
+abstract class ScanBarcodeEvent extends Equatable {
   const ScanBarcodeEvent();
 }
 
-class ScanBarcodeDetectedEvent extends ScanBarcodeEvent {
-  BarcodeCapture capture;
+class ScanBarcodeStartCameraEvent extends ScanBarcodeEvent {
+  const ScanBarcodeStartCameraEvent();
 
-  ScanBarcodeDetectedEvent({required this.capture});
+  @override
+  List<Object?> get props => [];
+}
+
+class ScanBarcodeDetectedEvent extends ScanBarcodeEvent {
+  final BarcodeCapture capture;
+
+  const ScanBarcodeDetectedEvent({required this.capture});
+
+  @override
+  List<Object?> get props => [capture];
 }
 
 class ScanBarcodeResetEvent extends ScanBarcodeEvent {
-  ScanBarcodeResetEvent();
+  const ScanBarcodeResetEvent();
+
+  @override
+  List<Object?> get props => [];
 }

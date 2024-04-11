@@ -23,8 +23,8 @@ class MyApp extends StatelessWidget {
     return BlocProvider(
       create: (BuildContext context) {
         final bloc = getIt<LanguageThemeBloc>();
-        bloc.add(const ChangeLanguageEvent(languageType: LanguageType.fa));
         bloc.add(const ChangeThemeEvent(themeType: ThemeType.light));
+        bloc.add(const ChangeLanguageEvent(languageType: LanguageType.fa));
         return bloc;
       },
       child: BlocBuilder<LanguageThemeBloc, LanguageThemeState>(

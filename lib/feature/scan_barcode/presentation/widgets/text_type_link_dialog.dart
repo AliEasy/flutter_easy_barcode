@@ -5,6 +5,7 @@ import 'package:flutter_easy_barcode/feature/scan_barcode/presentation/widgets/v
 import '../../../../core/localization.dart';
 import '../../../../core/navigator.dart';
 import '../../../../core/ui_constants.dart';
+import '../../../../core/uikit/dialog/dialog.dart';
 import '../../../../core/uikit/toast.dart';
 
 class BarcodeTypeTextDialog extends StatelessWidget {
@@ -47,7 +48,10 @@ class BarcodeTypeTextDialog extends StatelessWidget {
               width: 15,
             ),
             IconButton(
-              icon: const Icon(Icons.close_rounded, size: 20,),
+              icon: const Icon(
+                Icons.close_rounded,
+                size: 20,
+              ),
               onPressed: () {
                 popPage(context);
               },
@@ -75,7 +79,13 @@ class BarcodeTypeTextDialog extends StatelessWidget {
         ),
         TextButton(
           onPressed: () async {
-            viewFullTextDialog(context: context, text: text);
+            showDialogScaleFromCenter(
+              context: context,
+              closable: true,
+              page: ViewFullTextDialog(
+                text: text,
+              ),
+            );
           },
           child: Row(
             children: [

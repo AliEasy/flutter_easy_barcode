@@ -10,12 +10,16 @@ part 'scan_barcode_state.dart';
 @injectable
 class ScanBarcodeBloc extends Bloc<ScanBarcodeEvent, ScanBarcodeState> {
   ScanBarcodeBloc() : super(ScanBarcodeInitial()) {
+    on<ScanBarcodeStartCameraEvent>(_onScanBarcodeStartCameraEvent);
     on<ScanBarcodeDetectedEvent>(_onScanBarcodeDetectedEvent);
     on<ScanBarcodeResetEvent>(_onScanBarcodeResetEvent);
   }
 
-  void _onScanBarcodeDetectedEvent(
-      ScanBarcodeDetectedEvent event, Emitter<ScanBarcodeState> emit) {
+  void _onScanBarcodeStartCameraEvent(ScanBarcodeStartCameraEvent event, Emitter<ScanBarcodeState> emit) {
+    emit(ScanBarcodeInitial());
+  }
+
+  void _onScanBarcodeDetectedEvent(ScanBarcodeDetectedEvent event, Emitter<ScanBarcodeState> emit) {
     final List<Barcode> barcodes = event.capture.barcodes;
     if (barcodes.isNotEmpty) {
       var barcode = barcodes.first;
@@ -47,8 +51,7 @@ class ScanBarcodeBloc extends Bloc<ScanBarcodeEvent, ScanBarcodeState> {
     }
   }
 
-  void _onScanBarcodeResetEvent(
-      ScanBarcodeResetEvent event, Emitter<ScanBarcodeState> emit) {
+  void _onScanBarcodeResetEvent(ScanBarcodeResetEvent event, Emitter<ScanBarcodeState> emit) {
     emit(ScanBarcodeStateChanger());
   }
 }

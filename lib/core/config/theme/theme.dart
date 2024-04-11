@@ -158,146 +158,35 @@ extension AppTheme on ThemeData {
             scaffoldBackgroundColor: background.shade500,
             splashColor: neutral.shade50,
             primaryColor: primary,
-            progressIndicatorTheme: progressIndicatorTheme.copyWith(
-              color: primary.shade400,
-            ),
-            switchTheme: switchTheme.copyWith(
-              trackColor: MaterialStateColor.resolveWith((Set<MaterialState> states) {
-                const Set<MaterialState> interactiveStates = <MaterialState>{
-                  MaterialState.selected,
-                };
-                return states.any(interactiveStates.contains) ? primary : neutral.shade50;
-              }),
-            ),
-            radioTheme: radioTheme.copyWith(
-              fillColor: MaterialStateColor.resolveWith((Set<MaterialState> states) {
-                const Set<MaterialState> interactiveStates = <MaterialState>{
-                  MaterialState.selected,
-                };
-                return states.any(interactiveStates.contains) ? primary : neutral.shade800;
-              }),
-              overlayColor: MaterialStateColor.resolveWith((states) => neutral.shade800),
-            ),
-            checkboxTheme: checkboxTheme.copyWith(
-              fillColor: MaterialStateColor.resolveWith((Set<MaterialState> states) {
-                const Set<MaterialState> interactiveStates = <MaterialState>{
-                  MaterialState.selected,
-                  MaterialState.focused,
-                  MaterialState.pressed,
-                };
-                return states.any(interactiveStates.contains) ? primary : neutral.shade50;
-              }),
-              side: BorderSide(color: neutral.shade400, width: 2),
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(6)),
-              overlayColor: MaterialStateColor.resolveWith((states) => neutral.shade50),
-            ),
-            unselectedWidgetColor: primary,
-            snackBarTheme: snackBarTheme.copyWith(
-              backgroundColor: neutral.shade900,
-              behavior: SnackBarBehavior.floating,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(6),
-              ),
-            ),
             textTheme: _getTextTheme(languageCode),
-            iconTheme: iconTheme.copyWith(color: Colors.white, size: 16),
             appBarTheme: AppBarTheme(
-              foregroundColor: Colors.white,
-              backgroundColor: Colors.white,
-              titleTextStyle: textTheme.headlineMedium?.apply(color: neutral.shade900),
+              foregroundColor: background,
+              backgroundColor: background,
+              titleTextStyle: _getTextTheme(languageCode).headlineMedium?.apply(
+                    color: neutral.shade900,
+                  ),
               elevation: 0,
               systemOverlayStyle: SystemUiOverlayStyle.dark,
             ),
-            floatingActionButtonTheme: floatingActionButtonTheme.copyWith(
-              backgroundColor: neutral.shade900,
-            ),
-            elevatedButtonTheme: ElevatedButtonThemeData(
-              style: ElevatedButton.styleFrom(
-                padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+            navigationBarTheme: NavigationBarThemeData(
+              labelTextStyle: MaterialStateProperty.resolveWith(
+                (states) {
+                  if (states.contains(MaterialState.selected)) {
+                    return _getTextTheme(languageCode).labelSmall?.copyWith(
+                          color: neutral.shade800,
+                          fontWeight: FontWeight.w700,
+                        );
+                  }
+                  return _getTextTheme(languageCode).labelSmall?.copyWith(
+                        color: neutral.shade300,
+                        fontWeight: FontWeight.w700,
+                      );
+                },
               ),
-            ),
-            bottomNavigationBarTheme: bottomNavigationBarTheme.copyWith(
-              selectedItemColor: primary,
-              unselectedItemColor: primary.shade900,
-              selectedIconTheme: iconTheme.copyWith(color: primary),
-              selectedLabelStyle: textTheme.labelMedium?.copyWith(color: primary),
-              unselectedIconTheme: iconTheme.copyWith(color: primary),
-              unselectedLabelStyle: textTheme.labelMedium?.copyWith(color: primary),
+              elevation: 0,
             ),
           )
-        : copyWith(
-            scaffoldBackgroundColor: background.shade50,
-            splashColor: neutral.shade50,
-            primaryColor: primary,
-            progressIndicatorTheme: progressIndicatorTheme.copyWith(
-              color: primary.shade700,
-            ),
-            switchTheme: switchTheme.copyWith(
-              trackColor: MaterialStateColor.resolveWith((Set<MaterialState> states) {
-                const Set<MaterialState> interactiveStates = <MaterialState>{
-                  MaterialState.selected,
-                };
-                return states.any(interactiveStates.contains) ? primary : neutral.shade50;
-              }),
-            ),
-            radioTheme: radioTheme.copyWith(
-              fillColor: MaterialStateColor.resolveWith((Set<MaterialState> states) {
-                const Set<MaterialState> interactiveStates = <MaterialState>{
-                  MaterialState.selected,
-                };
-                return states.any(interactiveStates.contains) ? primary : neutral.shade800;
-              }),
-              overlayColor: MaterialStateColor.resolveWith((states) => neutral.shade800),
-            ),
-            checkboxTheme: checkboxTheme.copyWith(
-              fillColor: MaterialStateColor.resolveWith((Set<MaterialState> states) {
-                const Set<MaterialState> interactiveStates = <MaterialState>{
-                  MaterialState.selected,
-                  MaterialState.focused,
-                  MaterialState.pressed,
-                };
-                return states.any(interactiveStates.contains) ? primary : neutral.shade50;
-              }),
-              side: BorderSide(color: neutral.shade400, width: 2),
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(6)),
-              overlayColor: MaterialStateColor.resolveWith((states) => neutral.shade50),
-            ),
-            unselectedWidgetColor: primary,
-            snackBarTheme: snackBarTheme.copyWith(
-              backgroundColor: neutral.shade900,
-              behavior: SnackBarBehavior.floating,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(6),
-              ),
-            ),
-            textTheme: _getTextTheme(languageCode),
-            iconTheme: iconTheme.copyWith(color: neutral.shade900, size: 16),
-            appBarTheme: AppBarTheme(
-              foregroundColor: Colors.white,
-              backgroundColor: Colors.white,
-              titleTextStyle: textTheme.headlineMedium?.apply(color: neutral.shade900),
-              elevation: 0,
-              systemOverlayStyle: SystemUiOverlayStyle.dark,
-            ),
-            floatingActionButtonTheme: floatingActionButtonTheme.copyWith(
-              backgroundColor: neutral.shade900,
-            ),
-            elevatedButtonTheme: ElevatedButtonThemeData(
-              style: ElevatedButton.styleFrom(
-                padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-              ),
-            ),
-            bottomNavigationBarTheme: bottomNavigationBarTheme.copyWith(
-              selectedItemColor: primary,
-              unselectedItemColor: primary.shade900,
-              selectedIconTheme: iconTheme.copyWith(color: primary),
-              selectedLabelStyle: textTheme.labelMedium?.copyWith(color: primary),
-              unselectedIconTheme: iconTheme.copyWith(color: primary),
-              unselectedLabelStyle: textTheme.labelMedium?.copyWith(color: primary),
-            ),
-          );
+        : this;
   }
 
   TextTheme _getTextTheme(String? languageCode) {
@@ -333,22 +222,22 @@ extension AppTheme on ThemeData {
 
   TextTheme _getDefaultPersianTextTheme(Color color, String fontFamily) {
     return textTheme.copyWith(
-      displayLarge: textTheme.displayLarge?.copyWith(height: 1.4, fontSize: 30, fontWeight: FontWeight.w400, fontFamily: fontFamily, color: color),
-      displayMedium: textTheme.displayMedium?.copyWith(height: 1.4, fontSize: 25, fontWeight: FontWeight.w400, fontFamily: fontFamily, color: color),
-      displaySmall: textTheme.displaySmall?.copyWith(height: 1.4, fontSize: 20, fontWeight: FontWeight.w400, fontFamily: fontFamily, color: color),
-      headlineLarge: textTheme.headlineLarge?.copyWith(height: 1.4, fontSize: 19, fontWeight: FontWeight.w700, fontFamily: fontFamily, color: color),
+      displayLarge: textTheme.displayLarge?.copyWith(height: 1.2, fontSize: 57, fontWeight: FontWeight.w400, fontFamily: fontFamily, color: color),
+      displayMedium: textTheme.displayMedium?.copyWith(height: 1.2, fontSize: 45, fontWeight: FontWeight.w400, fontFamily: fontFamily, color: color),
+      displaySmall: textTheme.displaySmall?.copyWith(height: 1.2, fontSize: 36, fontWeight: FontWeight.w400, fontFamily: fontFamily, color: color),
+      headlineLarge: textTheme.headlineLarge?.copyWith(height: 1.2, fontSize: 32, fontWeight: FontWeight.w700, fontFamily: fontFamily, color: color),
       headlineMedium:
-          textTheme.headlineMedium?.copyWith(height: 1.4, fontSize: 18, fontWeight: FontWeight.w700, fontFamily: fontFamily, color: color),
-      headlineSmall: textTheme.headlineSmall?.copyWith(height: 1.4, fontSize: 17, fontWeight: FontWeight.w700, fontFamily: fontFamily, color: color),
-      titleLarge: textTheme.titleLarge?.copyWith(height: 1.4, fontSize: 15, fontWeight: FontWeight.w700, fontFamily: fontFamily, color: color),
-      titleMedium: textTheme.titleMedium?.copyWith(height: 1.4, fontSize: 13, fontWeight: FontWeight.w700, fontFamily: fontFamily, color: color),
-      titleSmall: textTheme.titleSmall?.copyWith(height: 1.4, fontSize: 11, fontWeight: FontWeight.w700, fontFamily: fontFamily, color: color),
-      labelLarge: textTheme.labelLarge?.copyWith(height: 1.4, fontSize: 9, fontWeight: FontWeight.w400, fontFamily: fontFamily, color: color),
-      labelMedium: textTheme.labelMedium?.copyWith(height: 1.4, fontSize: 8, fontWeight: FontWeight.w400, fontFamily: fontFamily, color: color),
-      labelSmall: textTheme.labelSmall?.copyWith(height: 1.4, fontSize: 7, fontWeight: FontWeight.w400, fontFamily: fontFamily, color: color),
-      bodyLarge: textTheme.bodyLarge?.copyWith(height: 1.4, fontSize: 6, fontWeight: FontWeight.w400, fontFamily: fontFamily, color: color),
-      bodyMedium: textTheme.bodyMedium?.copyWith(height: 1.4, fontSize: 5, fontWeight: FontWeight.w400, fontFamily: fontFamily, color: color),
-      bodySmall: textTheme.bodySmall?.copyWith(height: 1.4, fontSize: 4, fontWeight: FontWeight.w400, fontFamily: fontFamily, color: color),
+          textTheme.headlineMedium?.copyWith(height: 1.2, fontSize: 26, fontWeight: FontWeight.w700, fontFamily: fontFamily, color: color),
+      headlineSmall: textTheme.headlineSmall?.copyWith(height: 1.2, fontSize: 24, fontWeight: FontWeight.w700, fontFamily: fontFamily, color: color),
+      titleLarge: textTheme.titleLarge?.copyWith(height: 1.2, fontSize: 20, fontWeight: FontWeight.w700, fontFamily: fontFamily, color: color),
+      titleMedium: textTheme.titleMedium?.copyWith(height: 1.2, fontSize: 18, fontWeight: FontWeight.w700, fontFamily: fontFamily, color: color),
+      titleSmall: textTheme.titleSmall?.copyWith(height: 1.2, fontSize: 16, fontWeight: FontWeight.w700, fontFamily: fontFamily, color: color),
+      labelLarge: textTheme.labelLarge?.copyWith(height: 1.2, fontSize: 14, fontWeight: FontWeight.w400, fontFamily: fontFamily, color: color),
+      labelMedium: textTheme.labelMedium?.copyWith(height: 1.2, fontSize: 13, fontWeight: FontWeight.w400, fontFamily: fontFamily, color: color),
+      labelSmall: textTheme.labelSmall?.copyWith(height: 1.2, fontSize: 12, fontWeight: FontWeight.w400, fontFamily: fontFamily, color: color),
+      bodyLarge: textTheme.bodyLarge?.copyWith(height: 1.2, fontSize: 11, fontWeight: FontWeight.w400, fontFamily: fontFamily, color: color),
+      bodyMedium: textTheme.bodyMedium?.copyWith(height: 1.2, fontSize: 10, fontWeight: FontWeight.w400, fontFamily: fontFamily, color: color),
+      bodySmall: textTheme.bodySmall?.copyWith(height: 1.2, fontSize: 9, fontWeight: FontWeight.w400, fontFamily: fontFamily, color: color),
     );
   }
 }

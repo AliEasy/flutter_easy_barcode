@@ -225,22 +225,22 @@ extension AppTheme on ThemeData {
 
   TextTheme _getDefaultPersianTextTheme(Color color, String fontFamily) {
     return textTheme.copyWith(
-      displayLarge: textTheme.displayLarge?.copyWith(height: 1.2, fontSize: 57, fontWeight: FontWeight.w400, fontFamily: fontFamily, color: color),
-      displayMedium: textTheme.displayMedium?.copyWith(height: 1.2, fontSize: 45, fontWeight: FontWeight.w400, fontFamily: fontFamily, color: color),
-      displaySmall: textTheme.displaySmall?.copyWith(height: 1.2, fontSize: 36, fontWeight: FontWeight.w400, fontFamily: fontFamily, color: color),
-      headlineLarge: textTheme.headlineLarge?.copyWith(height: 1.2, fontSize: 32, fontWeight: FontWeight.w700, fontFamily: fontFamily, color: color),
+      displayLarge: textTheme.displayLarge?.copyWith(height: 1.4, fontSize: 57, fontWeight: FontWeight.w400, fontFamily: fontFamily, color: color),
+      displayMedium: textTheme.displayMedium?.copyWith(height: 1.4, fontSize: 45, fontWeight: FontWeight.w400, fontFamily: fontFamily, color: color),
+      displaySmall: textTheme.displaySmall?.copyWith(height: 1.4, fontSize: 36, fontWeight: FontWeight.w400, fontFamily: fontFamily, color: color),
+      headlineLarge: textTheme.headlineLarge?.copyWith(height: 1.4, fontSize: 32, fontWeight: FontWeight.w700, fontFamily: fontFamily, color: color),
       headlineMedium:
-          textTheme.headlineMedium?.copyWith(height: 1.2, fontSize: 26, fontWeight: FontWeight.w700, fontFamily: fontFamily, color: color),
-      headlineSmall: textTheme.headlineSmall?.copyWith(height: 1.2, fontSize: 24, fontWeight: FontWeight.w700, fontFamily: fontFamily, color: color),
-      titleLarge: textTheme.titleLarge?.copyWith(height: 1.2, fontSize: 20, fontWeight: FontWeight.w700, fontFamily: fontFamily, color: color),
-      titleMedium: textTheme.titleMedium?.copyWith(height: 1.2, fontSize: 18, fontWeight: FontWeight.w700, fontFamily: fontFamily, color: color),
-      titleSmall: textTheme.titleSmall?.copyWith(height: 1.2, fontSize: 16, fontWeight: FontWeight.w700, fontFamily: fontFamily, color: color),
-      labelLarge: textTheme.labelLarge?.copyWith(height: 1.2, fontSize: 14, fontWeight: FontWeight.w400, fontFamily: fontFamily, color: color),
-      labelMedium: textTheme.labelMedium?.copyWith(height: 1.2, fontSize: 13, fontWeight: FontWeight.w400, fontFamily: fontFamily, color: color),
-      labelSmall: textTheme.labelSmall?.copyWith(height: 1.2, fontSize: 12, fontWeight: FontWeight.w400, fontFamily: fontFamily, color: color),
-      bodyLarge: textTheme.bodyLarge?.copyWith(height: 1.2, fontSize: 11, fontWeight: FontWeight.w400, fontFamily: fontFamily, color: color),
-      bodyMedium: textTheme.bodyMedium?.copyWith(height: 1.2, fontSize: 10, fontWeight: FontWeight.w400, fontFamily: fontFamily, color: color),
-      bodySmall: textTheme.bodySmall?.copyWith(height: 1.2, fontSize: 9, fontWeight: FontWeight.w400, fontFamily: fontFamily, color: color),
+          textTheme.headlineMedium?.copyWith(height: 1.4, fontSize: 26, fontWeight: FontWeight.w700, fontFamily: fontFamily, color: color),
+      headlineSmall: textTheme.headlineSmall?.copyWith(height: 1.4, fontSize: 24, fontWeight: FontWeight.w700, fontFamily: fontFamily, color: color),
+      titleLarge: textTheme.titleLarge?.copyWith(height: 1.4, fontSize: 20, fontWeight: FontWeight.w700, fontFamily: fontFamily, color: color),
+      titleMedium: textTheme.titleMedium?.copyWith(height: 1.4, fontSize: 18, fontWeight: FontWeight.w700, fontFamily: fontFamily, color: color),
+      titleSmall: textTheme.titleSmall?.copyWith(height: 1.4, fontSize: 16, fontWeight: FontWeight.w700, fontFamily: fontFamily, color: color),
+      labelLarge: textTheme.labelLarge?.copyWith(height: 1.4, fontSize: 14, fontWeight: FontWeight.w400, fontFamily: fontFamily, color: color),
+      labelMedium: textTheme.labelMedium?.copyWith(height: 1.4, fontSize: 13, fontWeight: FontWeight.w400, fontFamily: fontFamily, color: color),
+      labelSmall: textTheme.labelSmall?.copyWith(height: 1.4, fontSize: 12, fontWeight: FontWeight.w400, fontFamily: fontFamily, color: color),
+      bodyLarge: textTheme.bodyLarge?.copyWith(height: 1.4, fontSize: 11, fontWeight: FontWeight.w400, fontFamily: fontFamily, color: color),
+      bodyMedium: textTheme.bodyMedium?.copyWith(height: 1.4, fontSize: 10, fontWeight: FontWeight.w400, fontFamily: fontFamily, color: color),
+      bodySmall: textTheme.bodySmall?.copyWith(height: 1.4, fontSize: 9, fontWeight: FontWeight.w400, fontFamily: fontFamily, color: color),
     );
   }
 }

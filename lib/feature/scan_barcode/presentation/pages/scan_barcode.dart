@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 
 import '../../../../common/util/permission_handler.dart';
-import '../../../../configureDependencies.dart';
+import '../../../../core/di/base/di_setup.dart';
 import '../../../../core/opener.dart';
 import '../../../../core/uikit/dialog/dialog.dart';
 import '../../../../core/uikit/dialog/permission/camera_permission_dialog.dart';

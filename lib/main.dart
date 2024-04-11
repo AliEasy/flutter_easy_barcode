@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easy_barcode/core/config/theme/theme.dart';
-import 'package:flutter_easy_barcode/configureDependencies.dart';
+import 'package:flutter_easy_barcode/core/di/base/di_setup.dart';
 import 'package:flutter_easy_barcode/core/localization.dart';
 import 'package:flutter_easy_barcode/core/service/language_theme/language_theme_bloc.dart';
 import 'package:flutter_easy_barcode/feature/home_page/presentation/pages/home.dart';

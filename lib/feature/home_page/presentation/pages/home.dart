@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../configureDependencies.dart';
+import '../../../../core/di/base/di_setup.dart';
 import '../../../scan_barcode/presentation/pages/scan_barcode.dart';
 import '../../model/home_page_navigation_menu_type.dart';
 import '../manager/home_navigation_bloc.dart';

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_easy_barcode/core/config/theme/theme.dart';
 
 enum ButtonWidgetType {
   dialog,

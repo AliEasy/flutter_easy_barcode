@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_easy_barcode/core/enum.dart';
-import 'package:flutter_easy_barcode/core/extension.dart';
-import 'package:flutter_easy_barcode/core/localization.dart';
-import 'package:flutter_easy_barcode/core/navigator.dart';
-import 'package:flutter_easy_barcode/core/opener.dart';
-import 'package:flutter_easy_barcode/core/ui_constants.dart';
-import 'package:flutter_easy_barcode/ui_kit/toast.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_easy_barcode/core/extension.dart';
+
+import '../../../../core/enum.dart';
+import '../../../../core/localization.dart';
+import '../../../../core/navigator.dart';
+import '../../../../core/opener.dart';
+import '../../../../core/ui_constants.dart';
+import '../../../../core/uikit/toast.dart';
 
 class BarcodeTypeLinkDialog extends StatelessWidget {
   final String link;
@@ -65,7 +66,7 @@ class BarcodeTypeLinkDialog extends StatelessWidget {
           onPressed: () async {
             var result = await CustomOpener.openLink(link);
             if (!context.mounted) return;
-            if (result != CustomOpenerLinkResult.success) {
+            if (result != CustomOpenerResult.success) {
               CustomToasts.errorToast(
                 context: context,
                 message: result.toHumanReadable(),

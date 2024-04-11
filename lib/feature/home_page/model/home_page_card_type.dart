@@ -1,4 +1,0 @@
-enum HomePageCardType {
-  scanBarcode,
-  createBarcode
-}

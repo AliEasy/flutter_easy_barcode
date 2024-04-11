@@ -2,25 +2,78 @@ import 'package:flutter_easy_barcode/core/enum.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class CustomOpener {
-  static Future<CustomOpenerLinkResult> openLink(String link) async {
+  static Future<CustomOpenerResult> openLink(String link) async {
     if (link.isEmpty) {
-      return CustomOpenerLinkResult.empty;
+      return CustomOpenerResult.empty;
     }
     try {
-      final url = Uri.parse(link);
-      bool canLaunch = await canLaunchUrl(url);
+      final uri = Uri.parse(link);
+      bool canLaunch = await canLaunchUrl(uri);
       if (canLaunch) {
-        bool launched = await launchUrl(url);
+        bool launched = await launchUrl(uri);
         if (launched) {
-          return CustomOpenerLinkResult.success;
+          return CustomOpenerResult.success;
         } else {
-          return CustomOpenerLinkResult.problem;
+          return CustomOpenerResult.problem;
         }
       } else {
-        return CustomOpenerLinkResult.invalid;
+        return CustomOpenerResult.invalid;
       }
     } catch (e) {
-      return CustomOpenerLinkResult.error;
+      return CustomOpenerResult.error;
+    }
+  }
+
+  static Future<CustomOpenerResult> dialNumber(String phoneNumber) async {
+    if (phoneNumber.isEmpty) {
+      return CustomOpenerResult.empty;
+    }
+    try {
+      final Uri dial = Uri(
+        scheme: 'tel',
+        path: phoneNumber,
+      );
+      bool canLaunch = await canLaunchUrl(dial);
+      if (canLaunch) {
+        bool launched = await launchUrl(dial);
+        if (launched) {
+          return CustomOpenerResult.success;
+        } else {
+          return CustomOpenerResult.problem;
+        }
+      } else {
+        return CustomOpenerResult.invalid;
+      }
+    } catch (e) {
+      return CustomOpenerResult.error;
+    }
+  }
+
+  static Future<CustomOpenerResult> openSms(String phoneNumber, String smsBody) async {
+    if (phoneNumber.isEmpty) {
+      return CustomOpenerResult.empty;
+    }
+    try {
+      final Uri dial = Uri(
+        scheme: 'sms',
+        path: phoneNumber,
+        queryParameters: <String, String>{
+          'body': Uri.encodeComponent(smsBody),
+        },
+      );
+      bool canLaunch = await canLaunchUrl(dial);
+      if (canLaunch) {
+        bool launched = await launchUrl(dial);
+        if (launched) {
+          return CustomOpenerResult.success;
+        } else {
+          return CustomOpenerResult.problem;
+        }
+      } else {
+        return CustomOpenerResult.invalid;
+      }
+    } catch (e) {
+      return CustomOpenerResult.error;
     }
   }
 }

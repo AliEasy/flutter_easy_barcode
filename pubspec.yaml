@@ -26,6 +26,7 @@ dependencies:
   injectable: 2.3.2
   get_it: 7.6.7
   fluttertoast: 8.2.4
+  permission_handler: 11.3.1
 
 dev_dependencies:
   flutter_test:
@@ -39,13 +40,40 @@ flutter:
   generate: true
 
   assets:
-    - assets/svg/create_barcode.svg
-    - assets/svg/scan_barcode.svg
-
-    - assets/app_icon/app_icon.png
-    - assets/app_icon/app_icon.svg
+    - assets/svg/
+    - assets/app_icon/
+    - assets/splash/
 
   fonts:
-    - family: sans
+    - family: Vazir
       fonts:
-       - asset: assets/font/iran_sans.ttf
+        - asset: assets/font/vazir/vazir_bold.ttf
+          weight: 700
+        - asset: assets/font/vazir/vazir_medium.ttf
+          weight: 500
+        - asset: assets/font/vazir/vazir_regular.ttf
+          weight: 400
+        - asset: assets/font/vazir/vazir_light.ttf
+          weight: 300
+        - asset: assets/font/vazir/vazir_thin.ttf
+          weight: 100
+
+    - family: VazirFarsi
+      fonts:
+        - asset: assets/font/vazir_farsi/vazir_bold.ttf
+          weight: 700
+        - asset: assets/font/vazir_farsi/vazir_medium.ttf
+          weight: 500
+        - asset: assets/font/vazir_farsi/vazir_regular.ttf
+          weight: 400
+        - asset: assets/font/vazir_farsi/vazir_light.ttf
+          weight: 300
+        - asset: assets/font/vazir_farsi/vazir_thin.ttf
+          weight: 100
+
+flutter_native_splash:
+  color: "#ffffff"
+  image: assets/splash/splash.png
+  android_12:
+    color: "#ffffff"
+    image: assets/splash/splash.png

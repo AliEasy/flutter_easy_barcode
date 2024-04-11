@@ -1,4 +1,4 @@
-enum CustomOpenerLinkResult {
+enum CustomOpenerResult {
   success,
   empty,
   invalid,

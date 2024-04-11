@@ -27,6 +27,26 @@ class ScanBarcodeAsTextState extends ScanBarcodeState {
   List<Object> get props => [text];
 }
 
+class ScanBarcodeAsPhoneState extends ScanBarcodeState {
+  final String phoneNumber;
+
+  const ScanBarcodeAsPhoneState({required this.phoneNumber});
+
+  @override
+  List<Object> get props => [phoneNumber];
+}
+
+class ScanBarcodeAsSmsState extends ScanBarcodeState {
+  final String phoneNumber;
+  final String smsBody;
+
+  const ScanBarcodeAsSmsState(
+      {required this.phoneNumber, required this.smsBody});
+
+  @override
+  List<Object> get props => [phoneNumber, smsBody];
+}
+
 class ScanBarcodeAsEmptyState extends ScanBarcodeState {
   @override
   List<Object> get props => [];

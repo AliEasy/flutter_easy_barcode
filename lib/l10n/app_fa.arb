@@ -11,6 +11,18 @@
   "emptyValue": "مقداری وارد نشده است",
   "successOperation": "عملیات موفق",
   "copyLink": "کپی کردن لینک",
+  "copyText": "کپی کردن متن",
   "linkCopied": "لینک مورد نظر کپی شد",
+  "text": "متن",
+  "close": "بستن",
+  "viewFullText": "نمایش کامل متن",
+  "callNumber": "شماره تماس",
+  "dial": "شماره گیری",
+  "dialCallNumber": "شماره گیری شماره تماس",
+  "copyCallNumber": "کپی کردن شماره تماس",
+  "cameraPermission": "دسترسی دوربین",
+  "cameraPermissionDesc": "برای استفاده از دوربین به دسترسی نیاز است.\nآیا ادامه میدهید؟",
+  "continueLabel" : "ادامه",
+  "cancel" : "انصراف",
   "empty": "خالی"
 }

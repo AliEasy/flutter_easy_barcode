@@ -12,7 +12,7 @@ import 'package:flutter_easy_barcode/core/service/language_theme/language_theme_
     as _i4;
 import 'package:flutter_easy_barcode/feature/home_page/presentation/manager/home_navigation_bloc.dart'
     as _i3;
-import 'package:flutter_easy_barcode/feature/scan_barcode/presentation/bloc/scan_barcode/scan_barcode_bloc.dart'
+import 'package:flutter_easy_barcode/feature/scan_barcode/presentation/manager/scan_barcode/scan_barcode_bloc.dart'
     as _i5;
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;

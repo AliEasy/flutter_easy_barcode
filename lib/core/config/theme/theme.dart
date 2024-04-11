@@ -173,12 +173,12 @@ extension AppTheme on ThemeData {
                 (states) {
                   if (states.contains(MaterialState.selected)) {
                     return _getTextTheme(languageCode).labelSmall?.copyWith(
-                          color: neutral.shade800,
+                          color: primary,
                           fontWeight: FontWeight.w700,
                         );
                   }
                   return _getTextTheme(languageCode).labelSmall?.copyWith(
-                        color: neutral.shade300,
+                        color: neutral,
                         fontWeight: FontWeight.w700,
                       );
                 },

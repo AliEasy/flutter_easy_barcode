@@ -71,48 +71,45 @@ class ScanBarcodePage extends StatelessWidget {
                 context.read<ScanBarcodeBloc>().add(const ScanBarcodeResetEvent());
               } else if (state is ScanBarcodeAsEmptyState) {}
             },
-            child: Scaffold(
-              body: Stack(
-                children: [
-                  MobileScanner(
-                    controller: cameraController,
-                    scanWindow: scanWindow,
-                    startDelay: true,
-
-                    onDetect: (capture) {
-                      context.read<ScanBarcodeBloc>().add(ScanBarcodeDetectedEvent(capture: capture));
-                    },
-                  ),
-                  QRScannerOverlay(
-                    overlayColour: Colors.black12,
-                    scanArea: scanWindow,
-                  ),
-                  Positioned(
-                    bottom: 40,
-                    right: 15,
-                    child: IconButton(
-                      splashRadius: 1,
-                      icon: Container(
-                        padding: const EdgeInsets.all(3),
-                        decoration: const BoxDecoration(
-                          color: Colors.black12,
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(5),
-                          ),
-                        ),
-                        child: const Icon(
-                          Icons.flash_on,
-                          color: Colors.white,
-                          size: 25,
+            child: Stack(
+              children: [
+                MobileScanner(
+                  controller: cameraController,
+                  scanWindow: scanWindow,
+                  startDelay: true,
+                  onDetect: (capture) {
+                    context.read<ScanBarcodeBloc>().add(ScanBarcodeDetectedEvent(capture: capture));
+                  },
+                ),
+                QRScannerOverlay(
+                  overlayColour: Colors.black12,
+                  scanArea: scanWindow,
+                ),
+                Positioned(
+                  bottom: 40,
+                  right: 15,
+                  child: IconButton(
+                    splashRadius: 1,
+                    icon: Container(
+                      padding: const EdgeInsets.all(3),
+                      decoration: const BoxDecoration(
+                        color: Colors.black12,
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(5),
                         ),
                       ),
-                      onPressed: () async {
-                        await cameraController.toggleTorch();
-                      },
+                      child: const Icon(
+                        Icons.flash_on,
+                        color: Colors.white,
+                        size: 25,
+                      ),
                     ),
+                    onPressed: () async {
+                      await cameraController.toggleTorch();
+                    },
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           );
         },

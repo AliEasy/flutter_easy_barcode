@@ -34,7 +34,7 @@ class HomeBottomNavigationBar extends StatelessWidget {
                 AssetsSvgHelper.scanBarcode,
                 height: 25,
                 width: 25,
-                colorFilter: ColorFilter.mode(Theme.of(context).primary.shade300, BlendMode.srcIn),
+                colorFilter: ColorFilter.mode(Theme.of(context).neutral, BlendMode.srcIn),
               ),
               selectedIcon: SvgPicture.asset(
                 AssetsSvgHelper.scanBarcode,
@@ -49,7 +49,7 @@ class HomeBottomNavigationBar extends StatelessWidget {
                 AssetsSvgHelper.createBarcode,
                 height: 20,
                 width: 20,
-                colorFilter: ColorFilter.mode(Theme.of(context).primary.shade300, BlendMode.srcIn),
+                colorFilter: ColorFilter.mode(Theme.of(context).neutral, BlendMode.srcIn),
               ),
               selectedIcon: SvgPicture.asset(
                 AssetsSvgHelper.createBarcode,

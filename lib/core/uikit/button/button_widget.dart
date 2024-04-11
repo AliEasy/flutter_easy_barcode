@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 enum ButtonWidgetType {
-  dialog,
   filled,
   text,
-  outlined;
+  outlined,
+  dialog;
 }
 
 class ButtonWidget extends StatelessWidget {

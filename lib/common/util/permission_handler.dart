@@ -5,7 +5,7 @@ class PermissionHandler {
     await Permission.camera.request();
   }
 
-  static Future<bool> cameraPermissionRequestCheck() async {
+  static Future<bool> cameraPermissionCheck() async {
     var status = await Permission.camera.isGranted;
     return status;
   }

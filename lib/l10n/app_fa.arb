@@ -21,6 +21,8 @@
   "dialCallNumber": "شماره گیری شماره تماس",
   "copyCallNumber": "کپی کردن شماره تماس",
   "cameraPermission": "دسترسی دوربین",
-  "cameraPermissionDesc": "برای استفاده از دوربین به دسترسی نیاز است.\nآیا ادامه میدهید",
+  "cameraPermissionDesc": "برای استفاده از دوربین به دسترسی نیاز است.\nآیا ادامه میدهید؟",
+  "continueLabel" : "ادامه",
+  "cancel" : "انصراف",
   "empty": "خالی"
 }

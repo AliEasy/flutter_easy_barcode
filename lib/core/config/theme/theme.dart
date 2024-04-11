@@ -185,6 +185,9 @@ extension AppTheme on ThemeData {
               ),
               elevation: 0,
             ),
+            iconTheme: IconThemeData(
+              color: primary,
+            ),
           )
         : this;
   }

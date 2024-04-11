@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 
+import '../../../../common/util/permission_handler.dart';
 import '../../../../configureDependencies.dart';
 import '../../../../core/opener.dart';
 import '../../../../core/uikit/dialog/dialog.dart';
+import '../../../../core/uikit/dialog/permission/camera_permission_dialog.dart';
+import '../../../home_page/presentation/manager/home_navigation_bloc.dart';
 import '../bloc/scan_barcode/scan_barcode_bloc.dart';
 import '../widgets/barcode_type_link_dialog.dart';
 import '../widgets/phone_type_link_dialog.dart';
@@ -37,7 +40,18 @@ class ScanBarcodePage extends StatelessWidget {
           return BlocListener<ScanBarcodeBloc, ScanBarcodeState>(
             listener: (context, state) async {
               if (state is ScanBarcodeInitial) {
-                await cameraController.start();
+                bool status = await PermissionHandler.cameraPermissionCheck();
+                if (!context.mounted) return;
+                if (!status) {
+                  await showCameraPermissionRequestDialog(context: context);
+                }
+                status = await PermissionHandler.cameraPermissionCheck();
+                if (status) {
+                  await cameraController.start();
+                } else {
+                  if (!context.mounted) return;
+                  context.read<HomeNavigationBloc>().add(HomeNavigationCreateEvent());
+                }
               } else if (state is ScanBarcodeAsLinkState) {
                 await showDialogSlideFromBottom(
                   context: context,

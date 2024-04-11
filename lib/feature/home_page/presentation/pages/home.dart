@@ -21,7 +21,10 @@ class HomePage extends StatelessWidget {
               selector: (state) => state.index,
               builder: (context, index) {
                 if (index == HomePageNavigationMenuType.scanBarcode.value) {
-                  return const ScanBarcodePage();
+                  return BlocProvider<HomeNavigationBloc>.value(
+                    value: context.read<HomeNavigationBloc>(),
+                    child: const ScanBarcodePage(),
+                  );
                 } else if (index == HomePageNavigationMenuType.createBarcode.value) {
                   return Container();
                 }

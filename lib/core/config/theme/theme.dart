@@ -155,6 +155,7 @@ extension AppTheme on ThemeData {
   ThemeData theme(String? languageCode) {
     return brightness == Brightness.light
         ? copyWith(
+            brightness: Brightness.light,
             scaffoldBackgroundColor: background.shade500,
             splashColor: neutral.shade50,
             primaryColor: primary,
@@ -187,6 +188,18 @@ extension AppTheme on ThemeData {
             ),
             iconTheme: IconThemeData(
               color: primary,
+            ),
+            inputDecorationTheme: InputDecorationTheme(
+              labelStyle: _getTextTheme(languageCode).labelLarge,
+              floatingLabelStyle: _getTextTheme(languageCode).labelMedium,
+              hintStyle: _getTextTheme(languageCode).labelLarge?.copyWith(
+                    color: neutral.shade400,
+                  ),
+              alignLabelWithHint: true,
+              contentPadding: const EdgeInsets.symmetric(
+                horizontal: 10,
+                vertical: 5,
+              ),
             ),
           )
         : this;

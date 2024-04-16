@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/di/base/di_setup.dart';
+import '../../../create_barcode/presentation/pages/create_barcode.dart';
 import '../../../scan_barcode/presentation/pages/scan_barcode.dart';
 import '../../model/home_page_navigation_menu_type.dart';
 import '../manager/home_navigation_bloc.dart';
@@ -26,7 +27,7 @@ class HomePage extends StatelessWidget {
                     child: const ScanBarcodePage(),
                   );
                 } else if (index == HomePageNavigationMenuType.createBarcode.value) {
-                  return Container();
+                  return const CreateBarcodePage();
                 }
                 return Container();
               },

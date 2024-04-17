@@ -4,11 +4,12 @@ import 'package:mobile_scanner/mobile_scanner.dart';
 
 import '../../../../common/util/permission_handler.dart';
 import '../../../../core/di/base/di_setup.dart';
+import '../../../../core/localization.dart';
 import '../../../../core/opener.dart';
 import '../../../../core/uikit/dialog/dialog.dart';
 import '../../../../core/uikit/dialog/permission/camera_permission_dialog.dart';
 import '../../../home_page/presentation/manager/home_navigation_bloc.dart';
-import '../bloc/scan_barcode/scan_barcode_bloc.dart';
+import '../manager/scan_barcode/scan_barcode_bloc.dart';
 import '../widgets/barcode_type_link_dialog.dart';
 import '../widgets/phone_type_link_dialog.dart';
 import '../widgets/scanner_overlay.dart';
@@ -98,6 +99,19 @@ class ScanBarcodePage extends StatelessWidget {
                 QRScannerOverlay(
                   overlayColour: Colors.black12,
                   scanArea: scanWindow,
+                ),
+                Positioned(
+                  top: 50,
+                  right: 0,
+                  left: 0,
+                  child: Text(
+                    Strings.instance.appLocalization.scanBarcode,
+                    style: Theme.of(context)
+                        .textTheme
+                        .titleLarge
+                        ?.copyWith(color: Colors.white),
+                    textAlign: TextAlign.center,
+                  ),
                 ),
                 Positioned(
                   bottom: 40,

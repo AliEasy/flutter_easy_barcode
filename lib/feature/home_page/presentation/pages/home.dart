@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/di/base/di_setup.dart';
 import '../../../create_barcode/presentation/pages/create_barcode.dart';
 import '../../../scan_barcode/presentation/pages/scan_barcode.dart';
-import '../../model/home_page_navigation_menu_type.dart';
+import '../../domain/entity/home_page_navigation_menu_type.dart';
 import '../manager/home_navigation_bloc.dart';
 import '../widgets/home_bottom_navigation_bar.dart';
 

@@ -2,7 +2,8 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
-import '../../model/home_page_navigation_menu_type.dart';
+import '../../domain/entity/home_page_navigation_menu_type.dart';
+
 
 part 'home_navigation_event.dart';
 

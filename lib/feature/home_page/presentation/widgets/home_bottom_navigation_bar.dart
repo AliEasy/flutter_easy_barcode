@@ -5,7 +5,7 @@ import 'package:flutter_svg/svg.dart';
 
 import '../../../../common/util/assets_svg_helper.dart';
 import '../../../../core/localization.dart';
-import '../../model/home_page_navigation_menu_type.dart';
+import '../../domain/entity/home_page_navigation_menu_type.dart';
 import '../manager/home_navigation_bloc.dart';
 
 class HomeBottomNavigationBar extends StatelessWidget {

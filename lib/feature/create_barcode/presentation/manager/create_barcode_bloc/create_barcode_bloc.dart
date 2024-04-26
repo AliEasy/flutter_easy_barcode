@@ -10,17 +10,22 @@ part 'create_barcode_state.dart';
 
 @injectable
 class CreateBarcodeBloc extends Bloc<CreateBarcodeEvent, CreateBarcodeState> {
-  final BarcodeOptions barcodeOptions = BarcodeOptions(value: '');
+  final BarcodeOptions _barcodeOptions = BarcodeOptions();
 
-  CreateBarcodeBloc() : super(CreateBarcodeInitialState()) {
+  CreateBarcodeBloc()
+      : super(
+          CreateBarcodeInitialState(
+            barcodeOptions: BarcodeOptions(),
+          ),
+        ) {
     on<CreateBarcodeUpdatedEvent>(_updateBarcode);
   }
 
   _updateBarcode(CreateBarcodeUpdatedEvent event, Emitter<CreateBarcodeState> emit) {
-    emit(CreateBarcodeInitialState());
+    emit(CreateBarcodeInitialState(barcodeOptions: _barcodeOptions));
     if (event.value != null) {
-      barcodeOptions.value = event.value!;
+      _barcodeOptions.value = event.value!;
     }
-    emit(CreateBarcodeUpdatedState(barcodeOptions: barcodeOptions));
+    emit(CreateBarcodeUpdatedState(barcodeOptions: _barcodeOptions));
   }
 }

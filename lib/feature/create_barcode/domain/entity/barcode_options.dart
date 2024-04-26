@@ -1,5 +1,5 @@
 class BarcodeOptions {
-  String value;
+  String? value;
 
-  BarcodeOptions({required this.value});
+  BarcodeOptions({this.value});
 }

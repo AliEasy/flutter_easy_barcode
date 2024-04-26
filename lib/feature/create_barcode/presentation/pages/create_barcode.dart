@@ -6,6 +6,7 @@ import 'package:pretty_qr_code/pretty_qr_code.dart';
 import '../../../../core/localization.dart';
 import '../../../../core/uikit/spacing.dart';
 import '../../../../core/uikit/text_form_field/text_form_field_widget.dart';
+import '../../domain/entity/barcode_options.dart';
 import '../manager/create_barcode_bloc/create_barcode_bloc.dart';
 
 class CreateBarcodePage extends StatelessWidget {
@@ -38,11 +39,12 @@ class CreateBarcodePage extends StatelessWidget {
                 BlocBuilder<CreateBarcodeBloc, CreateBarcodeState>(
                   builder: (context, state) {
                     if (state is CreateBarcodeUpdatedState) {
+                      BarcodeOptions barcodeOptions = state.barcodeOptions;
                       return SizedBox(
                         height: 100,
                         width: 100,
                         child: PrettyQrView.data(
-                          data: state.barcodeOptions.value,
+                          data: barcodeOptions.value!,
                           decoration: const PrettyQrDecoration(
                             image: PrettyQrDecorationImage(
                               image: AssetImage('images/flutter.png'),

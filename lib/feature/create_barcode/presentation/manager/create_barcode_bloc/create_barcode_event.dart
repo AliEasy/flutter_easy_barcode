@@ -10,5 +10,5 @@ class CreateBarcodeUpdatedEvent extends CreateBarcodeEvent {
   const CreateBarcodeUpdatedEvent({this.value});
 
   @override
-  List<Object?> get props => [];
+  List<Object?> get props => [value];
 }

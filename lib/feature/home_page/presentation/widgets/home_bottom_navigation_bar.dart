@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easy_barcode/core/config/theme/theme.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../../../common/util/assets_svg_helper.dart';
+import '../../../../core/common/util/assets_svg_helper.dart';
 import '../../../../core/localization.dart';
 import '../../domain/entity/home_page_navigation_menu_type.dart';
 import '../manager/home_navigation_bloc.dart';

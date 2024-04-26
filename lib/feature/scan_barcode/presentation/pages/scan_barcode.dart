@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 
-import '../../../../common/util/permission_handler.dart';
+import '../../../../core/common/util/permission_handler.dart';
 import '../../../../core/di/base/di_setup.dart';
 import '../../../../core/localization.dart';
 import '../../../../core/opener.dart';

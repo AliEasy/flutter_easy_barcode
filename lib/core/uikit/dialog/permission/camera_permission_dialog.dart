@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_easy_barcode/common/util/permission_handler.dart';
 import 'package:flutter_easy_barcode/core/config/theme/theme.dart';
 
+import '../../../common/util/permission_handler.dart';
 import '../../../localization.dart';
 import '../../button/button_widget.dart';
 import '../dialog.dart';

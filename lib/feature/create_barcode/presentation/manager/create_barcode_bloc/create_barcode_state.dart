@@ -1,19 +1,20 @@
 part of 'create_barcode_bloc.dart';
 
 abstract class CreateBarcodeState extends Equatable {
-  const CreateBarcodeState();
+  final BarcodeOptions barcodeOptions;
+  const CreateBarcodeState({required this.barcodeOptions});
 }
 
 class CreateBarcodeInitialState extends CreateBarcodeState {
+  const CreateBarcodeInitialState({required super.barcodeOptions});
+
   @override
-  List<Object> get props => [];
+  List<Object?> get props => [barcodeOptions];
 }
 
 class CreateBarcodeUpdatedState extends CreateBarcodeState {
-  final BarcodeOptions barcodeOptions;
-
-  const CreateBarcodeUpdatedState({required this.barcodeOptions});
+  const CreateBarcodeUpdatedState({required super.barcodeOptions});
 
   @override
-  List<Object> get props => [barcodeOptions];
+  List<Object?> get props => [barcodeOptions];
 }

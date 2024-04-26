@@ -1,12 +1,15 @@
 import 'package:flex_color_picker/flex_color_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easy_barcode/core/config/theme/theme.dart';
 import 'package:flutter_easy_barcode/core/di/base/di_setup.dart';
 import 'package:pretty_qr_code/pretty_qr_code.dart';
 
+import '../../../../core/common/util/assets_app_icon_handler.dart';
 import '../../../../core/localization.dart';
 import '../../../../core/uikit/spacing.dart';
+import '../../../../core/uikit/switch/switch_widget.dart';
 import '../../../../core/uikit/text_form_field/text_form_field_widget.dart';
 import '../../domain/entity/barcode_options.dart';
 import '../manager/create_barcode_bloc/create_barcode_bloc.dart';
@@ -85,20 +88,50 @@ class CreateBarcodePage extends StatelessWidget {
                     ),
                   ],
                 ),
+                Space.h16,
+                SwitchButton(
+                  title: Strings.instance.appLocalization.centralImage,
+                  onChanged: (value) async {
+                    if (value) {
+                      final ByteData bytes = await rootBundle.load(
+                        AssetsAppIconHelper.appIconPng,
+                      );
+                      final Uint8List imageByte = bytes.buffer.asUint8List();
+                      if (!context.mounted) return;
+                      context.read<CreateBarcodeBloc>().add(
+                            CreateBarcodeUpdatedEvent(
+                              hasCentralImage: true,
+                              centralImage: imageByte,
+                            ),
+                          );
+                    } else {
+                      context.read<CreateBarcodeBloc>().add(
+                            const CreateBarcodeUpdatedEvent(
+                              hasCentralImage: false,
+                              centralImage: null,
+                            ),
+                          );
+                    }
+                  },
+                ),
                 Space.h24,
                 BlocBuilder<CreateBarcodeBloc, CreateBarcodeState>(
                   builder: (context, state) {
-                    BarcodeOptions barcodeOptions = state.barcodeOptions;
+                    final BarcodeOptions barcodeOptions = state.barcodeOptions;
                     if (barcodeOptions.value.isNotEmpty) {
+                      PrettyQrDecorationImage? imageDecoration;
+                      if (barcodeOptions.hasCentralImage ?? false) {
+                        imageDecoration = PrettyQrDecorationImage(
+                          image: MemoryImage(barcodeOptions.centralImage!),
+                        );
+                      }
                       return SizedBox(
-                        height: 100,
-                        width: 100,
+                        height: 150,
+                        width: 150,
                         child: PrettyQrView.data(
                           data: barcodeOptions.value,
                           decoration: PrettyQrDecoration(
-                            image: const PrettyQrDecorationImage(
-                              image: AssetImage('images/flutter.png'),
-                            ),
+                            image: imageDecoration,
                             shape: PrettyQrSmoothSymbol(
                               color: barcodeOptions.color ?? barcodeColor,
                             ),

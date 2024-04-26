@@ -28,5 +28,7 @@
   "enterBarcodeText" : "متن بارکد را وارد کنید",
   "chooseBarcodeColor" : "رنگ بارکد را انتخاب کنید",
   "chooseBarcodeColorHint" : "با لمس کادر رنگی رو به رو، از صفحه باز شده رنگ را انتخاب کنید",
+  "centralImage" : "تصویر مرکزی",
+  "centralImageHint" : "با لمس تصویر رو به رو، تصویر مرکزی را انتخاب کنید",
   "empty": "خالی"
 }

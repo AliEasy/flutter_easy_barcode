@@ -7,9 +7,16 @@ abstract class CreateBarcodeEvent extends Equatable {
 class CreateBarcodeUpdatedEvent extends CreateBarcodeEvent {
   final String? value;
   final Color? color;
+  final bool? hasCentralImage;
+  final Uint8List? centralImage;
 
-  const CreateBarcodeUpdatedEvent({this.value, this.color});
+  const CreateBarcodeUpdatedEvent({
+    this.value,
+    this.color,
+    this.centralImage,
+    this.hasCentralImage,
+  });
 
   @override
-  List<Object?> get props => [value, color];
+  List<Object?> get props => [value, color, hasCentralImage, centralImage];
 }

@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
@@ -32,6 +34,10 @@ class CreateBarcodeBloc extends Bloc<CreateBarcodeEvent, CreateBarcodeState> {
     }
     if (event.color != null) {
       _barcodeOptions.color = event.color!;
+    }
+    if (event.hasCentralImage != null) {
+      _barcodeOptions.hasCentralImage = event.hasCentralImage!;
+      _barcodeOptions.centralImage = event.centralImage;
     }
     emit(CreateBarcodeUpdatedState(barcodeOptions: _barcodeOptions));
   }

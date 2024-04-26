@@ -24,6 +24,9 @@
   "cameraPermissionDesc": "برای استفاده از دوربین به دسترسی نیاز است.\nآیا ادامه میدهید؟",
   "continueLabel" : "ادامه",
   "cancel" : "انصراف",
-  "enterText" : "متن مورد نظر خود را وارد کنید",
+  "barcodeColor" : "رنگ بارکد",
+  "enterBarcodeText" : "متن بارکد را وارد کنید",
+  "chooseBarcodeColor" : "رنگ بارکد را انتخاب کنید",
+  "chooseBarcodeColorHint" : "با لمس کادر رنگی رو به رو، از صفحه باز شده رنگ را انتخاب کنید",
   "empty": "خالی"
 }

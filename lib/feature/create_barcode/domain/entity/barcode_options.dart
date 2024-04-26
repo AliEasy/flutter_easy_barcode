@@ -1,5 +1,8 @@
-class BarcodeOptions {
-  String? value;
+import 'package:flutter/material.dart';
 
-  BarcodeOptions({this.value});
+class BarcodeOptions {
+  String value;
+  Color? color;
+
+  BarcodeOptions({required this.value, this.color});
 }

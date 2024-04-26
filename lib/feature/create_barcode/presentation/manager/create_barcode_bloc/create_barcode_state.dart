@@ -9,12 +9,12 @@ class CreateBarcodeInitialState extends CreateBarcodeState {
   const CreateBarcodeInitialState({required super.barcodeOptions});
 
   @override
-  List<Object?> get props => [barcodeOptions.value];
+  List<Object?> get props => [barcodeOptions.value, barcodeOptions.color];
 }
 
 class CreateBarcodeUpdatedState extends CreateBarcodeState {
   const CreateBarcodeUpdatedState({required super.barcodeOptions});
 
   @override
-  List<Object?> get props => [barcodeOptions.value];
+  List<Object?> get props => [barcodeOptions.value, barcodeOptions.color];
 }

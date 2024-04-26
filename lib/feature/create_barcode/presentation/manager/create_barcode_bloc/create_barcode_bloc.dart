@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:injectable/injectable.dart';
@@ -10,12 +11,12 @@ part 'create_barcode_state.dart';
 
 @injectable
 class CreateBarcodeBloc extends Bloc<CreateBarcodeEvent, CreateBarcodeState> {
-  final BarcodeOptions _barcodeOptions = BarcodeOptions();
+  final BarcodeOptions _barcodeOptions = BarcodeOptions(value: '');
 
   CreateBarcodeBloc()
       : super(
           CreateBarcodeInitialState(
-            barcodeOptions: BarcodeOptions(),
+            barcodeOptions: BarcodeOptions(value: ''),
           ),
         ) {
     on<CreateBarcodeUpdatedEvent>(_updateBarcode);
@@ -25,6 +26,12 @@ class CreateBarcodeBloc extends Bloc<CreateBarcodeEvent, CreateBarcodeState> {
     emit(CreateBarcodeInitialState(barcodeOptions: _barcodeOptions));
     if (event.value != null) {
       _barcodeOptions.value = event.value!;
+    }
+    if (_barcodeOptions.value.isEmpty) {
+      return;
+    }
+    if (event.color != null) {
+      _barcodeOptions.color = event.color!;
     }
     emit(CreateBarcodeUpdatedState(barcodeOptions: _barcodeOptions));
   }

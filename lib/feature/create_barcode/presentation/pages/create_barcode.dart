@@ -1,5 +1,7 @@
+import 'package:flex_color_picker/flex_color_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_easy_barcode/core/config/theme/theme.dart';
 import 'package:flutter_easy_barcode/core/di/base/di_setup.dart';
 import 'package:pretty_qr_code/pretty_qr_code.dart';
 
@@ -14,7 +16,7 @@ class CreateBarcodePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final valueController = TextEditingController();
+    Color barcodeColor = Theme.of(context).primary;
     return BlocProvider(
       create: (context) => getIt<CreateBarcodeBloc>(),
       child: Builder(builder: (context) {
@@ -25,29 +27,80 @@ class CreateBarcodePage extends StatelessWidget {
               children: [
                 Space.h32,
                 TextFormFieldWidget(
-                  controller: valueController,
                   labelText: Strings.instance.appLocalization.text,
-                  hintText: Strings.instance.appLocalization.enterText,
+                  hintText: Strings.instance.appLocalization.enterBarcodeText,
                   autoFocus: true,
                   listener: (value) {
                     context.read<CreateBarcodeBloc>().add(
-                          CreateBarcodeUpdatedEvent(value: value),
+                          CreateBarcodeUpdatedEvent(
+                            value: value,
+                          ),
                         );
                   },
                 ),
-                Space.h12,
+                Space.h16,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          Strings.instance.appLocalization.barcodeColor,
+                          style: Theme.of(context).textTheme.labelLarge,
+                        ),
+                        Space.h2,
+                        Text(
+                          Strings.instance.appLocalization.chooseBarcodeColorHint,
+                          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                                color: Theme.of(context).neutral[700],
+                              ),
+                        )
+                      ],
+                    ),
+                    InkWell(
+                      onTap: () async {
+                        barcodeColor = await _changeColor(context, barcodeColor);
+                        if (!context.mounted) return;
+                        context.read<CreateBarcodeBloc>().add(
+                              CreateBarcodeUpdatedEvent(
+                                color: barcodeColor,
+                              ),
+                            );
+                      },
+                      child: BlocBuilder<CreateBarcodeBloc, CreateBarcodeState>(
+                        builder: (context, state) {
+                          return Container(
+                            height: 30,
+                            width: 30,
+                            decoration: BoxDecoration(
+                              color: state.barcodeOptions.color ?? barcodeColor,
+                              borderRadius: const BorderRadius.all(
+                                Radius.circular(10),
+                              ),
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+                Space.h24,
                 BlocBuilder<CreateBarcodeBloc, CreateBarcodeState>(
                   builder: (context, state) {
-                    if (state is CreateBarcodeUpdatedState) {
-                      BarcodeOptions barcodeOptions = state.barcodeOptions;
+                    BarcodeOptions barcodeOptions = state.barcodeOptions;
+                    if (barcodeOptions.value.isNotEmpty) {
                       return SizedBox(
                         height: 100,
                         width: 100,
                         child: PrettyQrView.data(
-                          data: barcodeOptions.value!,
-                          decoration: const PrettyQrDecoration(
-                            image: PrettyQrDecorationImage(
+                          data: barcodeOptions.value,
+                          decoration: PrettyQrDecoration(
+                            image: const PrettyQrDecorationImage(
                               image: AssetImage('images/flutter.png'),
+                            ),
+                            shape: PrettyQrSmoothSymbol(
+                              color: barcodeOptions.color ?? barcodeColor,
                             ),
                           ),
                         ),
@@ -62,5 +115,37 @@ class CreateBarcodePage extends StatelessWidget {
         );
       }),
     );
+  }
+
+  Future<Color> _changeColor(BuildContext context, Color initialColor) async {
+    final Color newColor = await showColorPickerDialog(
+      context,
+      initialColor,
+      title: Text(
+        Strings.instance.appLocalization.barcodeColor,
+        style: Theme.of(context).textTheme.titleLarge,
+      ),
+      width: 40,
+      height: 40,
+      spacing: 0,
+      runSpacing: 0,
+      borderRadius: 0,
+      wheelDiameter: 165,
+      pickersEnabled: <ColorPickerType, bool>{
+        ColorPickerType.primary: true,
+        ColorPickerType.accent: false,
+      },
+      actionButtons: const ColorPickerActionButtons(
+        okButton: true,
+        closeButton: true,
+        dialogActionButtons: false,
+      ),
+      constraints: const BoxConstraints(
+        minHeight: 380,
+        minWidth: 320,
+        maxWidth: 320,
+      ),
+    );
+    return newColor;
   }
 }

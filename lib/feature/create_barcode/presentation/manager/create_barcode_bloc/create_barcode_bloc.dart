@@ -29,9 +29,6 @@ class CreateBarcodeBloc extends Bloc<CreateBarcodeEvent, CreateBarcodeState> {
     if (event.value != null) {
       _barcodeOptions.value = event.value!;
     }
-    if (_barcodeOptions.value.isEmpty) {
-      return;
-    }
     if (event.color != null) {
       _barcodeOptions.color = event.color!;
     }

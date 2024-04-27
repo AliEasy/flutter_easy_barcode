@@ -101,7 +101,7 @@ class ScanBarcodePage extends StatelessWidget {
                   scanArea: scanWindow,
                 ),
                 Positioned(
-                  top: 50,
+                  top: 40,
                   right: 0,
                   left: 0,
                   child: Text(

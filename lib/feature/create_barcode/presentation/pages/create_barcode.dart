@@ -20,133 +20,140 @@ class CreateBarcodePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Color barcodeColor = Theme.of(context).primary;
-    return BlocProvider(
-      create: (context) => getIt<CreateBarcodeBloc>(),
-      child: Builder(builder: (context) {
-        return SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-            child: Column(
-              children: [
-                Space.h32,
-                TextFormFieldWidget(
-                  labelText: Strings.instance.appLocalization.text,
-                  hintText: Strings.instance.appLocalization.enterBarcodeText,
-                  autoFocus: true,
-                  listener: (value) {
-                    context.read<CreateBarcodeBloc>().add(
-                          CreateBarcodeUpdatedEvent(
-                            value: value,
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          Strings.instance.appLocalization.createBarcode,
+        ),
+      ),
+      body: BlocProvider(
+        create: (context) => getIt<CreateBarcodeBloc>(),
+        child: Builder(builder: (context) {
+          return SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+              child: Column(
+                children: [
+                  Space.h32,
+                  TextFormFieldWidget(
+                    labelText: Strings.instance.appLocalization.text,
+                    hintText: Strings.instance.appLocalization.enterBarcodeText,
+                    autoFocus: true,
+                    listener: (value) {
+                      context.read<CreateBarcodeBloc>().add(
+                            CreateBarcodeUpdatedEvent(
+                              value: value,
+                            ),
+                          );
+                    },
+                  ),
+                  Space.h16,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            Strings.instance.appLocalization.barcodeColor,
+                            style: Theme.of(context).textTheme.labelLarge,
                           ),
-                        );
-                  },
-                ),
-                Space.h16,
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          Strings.instance.appLocalization.barcodeColor,
-                          style: Theme.of(context).textTheme.labelLarge,
-                        ),
-                        Space.h2,
-                        Text(
-                          Strings.instance.appLocalization.chooseBarcodeColorHint,
-                          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                                color: Theme.of(context).neutral[700],
+                          Space.h2,
+                          Text(
+                            Strings.instance.appLocalization.chooseBarcodeColorHint,
+                            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                                  color: Theme.of(context).neutral[700],
+                                ),
+                          )
+                        ],
+                      ),
+                      InkWell(
+                        onTap: () async {
+                          barcodeColor = await _changeColor(context, barcodeColor);
+                          if (!context.mounted) return;
+                          context.read<CreateBarcodeBloc>().add(
+                                CreateBarcodeUpdatedEvent(
+                                  color: barcodeColor,
+                                ),
+                              );
+                        },
+                        child: BlocBuilder<CreateBarcodeBloc, CreateBarcodeState>(
+                          builder: (context, state) {
+                            return Container(
+                              height: 30,
+                              width: 30,
+                              decoration: BoxDecoration(
+                                color: state.barcodeOptions.color ?? barcodeColor,
+                                borderRadius: const BorderRadius.all(
+                                  Radius.circular(10),
+                                ),
                               ),
-                        )
-                      ],
-                    ),
-                    InkWell(
-                      onTap: () async {
-                        barcodeColor = await _changeColor(context, barcodeColor);
+                            );
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                  Space.h16,
+                  SwitchButton(
+                    title: Strings.instance.appLocalization.centralImage,
+                    onChanged: (value) async {
+                      if (value) {
+                        final ByteData bytes = await rootBundle.load(
+                          AssetsAppIconHelper.appIconPng,
+                        );
+                        final Uint8List imageByte = bytes.buffer.asUint8List();
                         if (!context.mounted) return;
                         context.read<CreateBarcodeBloc>().add(
                               CreateBarcodeUpdatedEvent(
-                                color: barcodeColor,
+                                hasCentralImage: true,
+                                centralImage: imageByte,
                               ),
                             );
-                      },
-                      child: BlocBuilder<CreateBarcodeBloc, CreateBarcodeState>(
-                        builder: (context, state) {
-                          return Container(
-                            height: 30,
-                            width: 30,
-                            decoration: BoxDecoration(
-                              color: state.barcodeOptions.color ?? barcodeColor,
-                              borderRadius: const BorderRadius.all(
-                                Radius.circular(10),
+                      } else {
+                        context.read<CreateBarcodeBloc>().add(
+                              const CreateBarcodeUpdatedEvent(
+                                hasCentralImage: false,
+                                centralImage: null,
+                              ),
+                            );
+                      }
+                    },
+                  ),
+                  Space.h24,
+                  BlocBuilder<CreateBarcodeBloc, CreateBarcodeState>(
+                    builder: (context, state) {
+                      final BarcodeOptions barcodeOptions = state.barcodeOptions;
+                      if (barcodeOptions.value.isNotEmpty) {
+                        PrettyQrDecorationImage? imageDecoration;
+                        if (barcodeOptions.hasCentralImage ?? false) {
+                          imageDecoration = PrettyQrDecorationImage(
+                            image: MemoryImage(barcodeOptions.centralImage!),
+                          );
+                        }
+                        return SizedBox(
+                          height: 150,
+                          width: 150,
+                          child: PrettyQrView.data(
+                            data: barcodeOptions.value,
+                            decoration: PrettyQrDecoration(
+                              image: imageDecoration,
+                              shape: PrettyQrSmoothSymbol(
+                                color: barcodeOptions.color ?? barcodeColor,
                               ),
                             ),
-                          );
-                        },
-                      ),
-                    ),
-                  ],
-                ),
-                Space.h16,
-                SwitchButton(
-                  title: Strings.instance.appLocalization.centralImage,
-                  onChanged: (value) async {
-                    if (value) {
-                      final ByteData bytes = await rootBundle.load(
-                        AssetsAppIconHelper.appIconPng,
-                      );
-                      final Uint8List imageByte = bytes.buffer.asUint8List();
-                      if (!context.mounted) return;
-                      context.read<CreateBarcodeBloc>().add(
-                            CreateBarcodeUpdatedEvent(
-                              hasCentralImage: true,
-                              centralImage: imageByte,
-                            ),
-                          );
-                    } else {
-                      context.read<CreateBarcodeBloc>().add(
-                            const CreateBarcodeUpdatedEvent(
-                              hasCentralImage: false,
-                              centralImage: null,
-                            ),
-                          );
-                    }
-                  },
-                ),
-                Space.h24,
-                BlocBuilder<CreateBarcodeBloc, CreateBarcodeState>(
-                  builder: (context, state) {
-                    final BarcodeOptions barcodeOptions = state.barcodeOptions;
-                    if (barcodeOptions.value.isNotEmpty) {
-                      PrettyQrDecorationImage? imageDecoration;
-                      if (barcodeOptions.hasCentralImage ?? false) {
-                        imageDecoration = PrettyQrDecorationImage(
-                          image: MemoryImage(barcodeOptions.centralImage!),
+                          ),
                         );
                       }
-                      return SizedBox(
-                        height: 150,
-                        width: 150,
-                        child: PrettyQrView.data(
-                          data: barcodeOptions.value,
-                          decoration: PrettyQrDecoration(
-                            image: imageDecoration,
-                            shape: PrettyQrSmoothSymbol(
-                              color: barcodeOptions.color ?? barcodeColor,
-                            ),
-                          ),
-                        ),
-                      );
-                    }
-                    return const SizedBox();
-                  },
-                )
-              ],
+                      return const SizedBox();
+                    },
+                  )
+                ],
+              ),
             ),
-          ),
-        );
-      }),
+          );
+        }),
+      ),
     );
   }
 

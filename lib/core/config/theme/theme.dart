@@ -162,12 +162,13 @@ extension AppTheme on ThemeData {
             textTheme: _getTextTheme(languageCode),
             appBarTheme: AppBarTheme(
               foregroundColor: background,
-              backgroundColor: background,
-              titleTextStyle: _getTextTheme(languageCode).headlineMedium?.apply(
-                    color: neutral.shade900,
+              backgroundColor: primary,
+              titleTextStyle: _getTextTheme(languageCode).titleLarge?.apply(
+                    color: background,
                   ),
               elevation: 0,
-              systemOverlayStyle: SystemUiOverlayStyle.dark,
+              centerTitle: true,
+              systemOverlayStyle: SystemUiOverlayStyle.light,
             ),
             navigationBarTheme: NavigationBarThemeData(
               labelTextStyle: MaterialStateProperty.resolveWith(

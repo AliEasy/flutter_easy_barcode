@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easy_barcode/core/config/theme/theme.dart';
 import 'package:flutter_easy_barcode/core/di/base/di_setup.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:pretty_qr_code/pretty_qr_code.dart';
 
 import '../../../../core/common/util/assets_app_icon_handler.dart';
@@ -34,7 +35,6 @@ class CreateBarcodePage extends StatelessWidget {
               padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
               child: Column(
                 children: [
-                  Space.h32,
                   TextFormFieldWidget(
                     labelText: Strings.instance.appLocalization.text,
                     hintText: Strings.instance.appLocalization.enterBarcodeText,
@@ -120,7 +120,64 @@ class CreateBarcodePage extends StatelessWidget {
                       }
                     },
                   ),
-                  Space.h24,
+                  Space.h8,
+                  BlocBuilder<CreateBarcodeBloc, CreateBarcodeState>(
+                    builder: (context, state) {
+                      final barcodeOptions = state.barcodeOptions;
+                      if (barcodeOptions.hasCentralImage ?? false) {
+                        return Padding(
+                          padding: const EdgeInsets.only(left: 15, right: 15),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    Strings.instance.appLocalization.chooseCentralImage,
+                                    style: Theme.of(context).textTheme.labelLarge,
+                                  ),
+                                  Space.h2,
+                                  Text(
+                                    Strings.instance.appLocalization.centralImageHint,
+                                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                                          color: Theme.of(context).neutral[700],
+                                        ),
+                                  )
+                                ],
+                              ),
+                              InkWell(
+                                onTap: () async {
+                                  final pickedImage = await _pickImage();
+                                  if (!context.mounted || pickedImage == null) return;
+                                  context.read<CreateBarcodeBloc>().add(
+                                        CreateBarcodeUpdatedEvent(
+                                          centralImage: pickedImage,
+                                          hasCentralImage: true,
+                                        ),
+                                      );
+                                },
+                                child: Container(
+                                  height: 30,
+                                  width: 30,
+                                  decoration: const BoxDecoration(
+                                    borderRadius: BorderRadius.all(
+                                      Radius.circular(10),
+                                    ),
+                                  ),
+                                  child: Image.memory(
+                                    barcodeOptions.centralImage!,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        );
+                      }
+                      return const SizedBox();
+                    },
+                  ),
+                  Space.h40,
                   BlocBuilder<CreateBarcodeBloc, CreateBarcodeState>(
                     builder: (context, state) {
                       final BarcodeOptions barcodeOptions = state.barcodeOptions;
@@ -128,7 +185,11 @@ class CreateBarcodePage extends StatelessWidget {
                         PrettyQrDecorationImage? imageDecoration;
                         if (barcodeOptions.hasCentralImage ?? false) {
                           imageDecoration = PrettyQrDecorationImage(
-                            image: MemoryImage(barcodeOptions.centralImage!),
+                            scale: 0.3,
+                            image: MemoryImage(
+                              barcodeOptions.centralImage!,
+                              scale: 1.5,
+                            ),
                           );
                         }
                         return SizedBox(
@@ -187,5 +248,11 @@ class CreateBarcodePage extends StatelessWidget {
       ),
     );
     return newColor;
+  }
+
+  Future<Uint8List?> _pickImage() async {
+    final ImagePicker picker = ImagePicker();
+    final XFile? image = await picker.pickImage(source: ImageSource.gallery);
+    return await image?.readAsBytes();
   }
 }

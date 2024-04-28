@@ -1,3 +1,4 @@
+import 'package:file_saver/file_saver.dart';
 import 'package:flex_color_picker/flex_color_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -6,9 +7,11 @@ import 'package:flutter_easy_barcode/core/config/theme/theme.dart';
 import 'package:flutter_easy_barcode/core/di/base/di_setup.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:pretty_qr_code/pretty_qr_code.dart';
+import 'package:share_plus/share_plus.dart';
 
 import '../../../../core/common/util/assets_app_icon_handler.dart';
 import '../../../../core/localization.dart';
+import '../../../../core/uikit/icon_button/icon_button_widget.dart';
 import '../../../../core/uikit/spacing.dart';
 import '../../../../core/uikit/switch/switch_widget.dart';
 import '../../../../core/uikit/text_form_field/text_form_field_widget.dart';
@@ -182,6 +185,7 @@ class CreateBarcodePage extends StatelessWidget {
                     builder: (context, state) {
                       final BarcodeOptions barcodeOptions = state.barcodeOptions;
                       if (barcodeOptions.value.isNotEmpty) {
+                        late PrettyQrDecoration qrDecoration;
                         PrettyQrDecorationImage? imageDecoration;
                         if (barcodeOptions.hasCentralImage ?? false) {
                           imageDecoration = PrettyQrDecorationImage(
@@ -192,18 +196,68 @@ class CreateBarcodePage extends StatelessWidget {
                             ),
                           );
                         }
-                        return SizedBox(
-                          height: 150,
-                          width: 150,
-                          child: PrettyQrView.data(
-                            data: barcodeOptions.value,
-                            decoration: PrettyQrDecoration(
-                              image: imageDecoration,
-                              shape: PrettyQrSmoothSymbol(
-                                color: barcodeOptions.color ?? barcodeColor,
+                        qrDecoration = PrettyQrDecoration(
+                          image: imageDecoration,
+                          shape: PrettyQrSmoothSymbol(
+                            color: barcodeOptions.color ?? barcodeColor,
+                          ),
+                        );
+
+                        return Column(
+                          children: [
+                            SizedBox(
+                              height: 150,
+                              width: 150,
+                              child: PrettyQrView.data(
+                                data: barcodeOptions.value,
+                                decoration: qrDecoration,
                               ),
                             ),
-                          ),
+                            Space.h12,
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                IconButtonWidget(
+                                  icon: Icons.download_rounded,
+                                  onTap: () async {
+                                    final exportedImage = await _exportImage(
+                                      barcodeOptions.value,
+                                      qrDecoration,
+                                    );
+                                    if (exportedImage != null) {
+                                      FileSaver.instance.saveAs(
+                                        name: 'qrCode',
+                                        mimeType: MimeType.jpeg,
+                                        ext: 'jpg',
+                                        bytes: exportedImage,
+                                      );
+                                    }
+                                  },
+                                ),
+                                Space.w8,
+                                IconButtonWidget(
+                                  icon: Icons.share_rounded,
+                                  onTap: () async {
+                                    final exportedImage = await _exportImage(
+                                      barcodeOptions.value,
+                                      qrDecoration,
+                                    );
+                                    if (exportedImage != null) {
+                                      Share.shareXFiles(
+                                        [
+                                          XFile.fromData(
+                                            exportedImage,
+                                            name: 'qrCode',
+                                            mimeType: 'image/jpeg',
+                                          ),
+                                        ],
+                                      );
+                                    }
+                                  },
+                                ),
+                              ],
+                            ),
+                          ],
                         );
                       }
                       return const SizedBox();
@@ -254,5 +308,20 @@ class CreateBarcodePage extends StatelessWidget {
     final ImagePicker picker = ImagePicker();
     final XFile? image = await picker.pickImage(source: ImageSource.gallery);
     return await image?.readAsBytes();
+  }
+
+  Future<Uint8List?> _exportImage(String data, PrettyQrDecoration decoration) async {
+    final qrCode = QrCode.fromData(
+      data: data,
+      errorCorrectLevel: QrErrorCorrectLevel.H,
+    );
+
+    final qrImage = QrImage(qrCode);
+    final exportedImage = await qrImage.toImageAsBytes(
+      size: 512,
+      configuration: ImageConfiguration.empty,
+      decoration: decoration,
+    );
+    return exportedImage?.buffer.asUint8List(exportedImage.offsetInBytes, exportedImage.lengthInBytes);
   }
 }

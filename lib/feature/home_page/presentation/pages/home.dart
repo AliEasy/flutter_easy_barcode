@@ -17,24 +17,27 @@ class HomePage extends StatelessWidget {
       create: (context) => getIt<HomeNavigationBloc>(),
       child: Builder(
         builder: (context) {
-          return Scaffold(
-            body: BlocSelector<HomeNavigationBloc, HomeNavigationState, int>(
-              selector: (state) => state.index,
-              builder: (context, index) {
-                if (index == HomePageNavigationMenuType.scanBarcode.value) {
-                  return BlocProvider<HomeNavigationBloc>.value(
-                    value: context.read<HomeNavigationBloc>(),
-                    child: const ScanBarcodePage(),
-                  );
-                } else if (index == HomePageNavigationMenuType.createBarcode.value) {
-                  return const CreateBarcodePage();
-                }
-                return Container();
-              },
-            ),
-            bottomNavigationBar: BlocProvider<HomeNavigationBloc>.value(
-              value: context.read<HomeNavigationBloc>(),
-              child: const HomeBottomNavigationBar(),
+          return SafeArea(
+            top: false,
+            child: Scaffold(
+              body: BlocSelector<HomeNavigationBloc, HomeNavigationState, int>(
+                selector: (state) => state.index,
+                builder: (context, index) {
+                  if (index == HomePageNavigationMenuType.scanBarcode.value) {
+                    return BlocProvider<HomeNavigationBloc>.value(
+                      value: context.read<HomeNavigationBloc>(),
+                      child: const ScanBarcodePage(),
+                    );
+                  } else if (index == HomePageNavigationMenuType.createBarcode.value) {
+                    return const CreateBarcodePage();
+                  }
+                  return Container();
+                },
+              ),
+              bottomNavigationBar: BlocProvider<HomeNavigationBloc>.value(
+                value: context.read<HomeNavigationBloc>(),
+                child: const HomeBottomNavigationBar(),
+              ),
             ),
           );
         },

@@ -7,12 +7,8 @@ Digital banking Neo Bank.
 - state manager: [BLOC](https://bloclibrary.dev/#/)
 - architecture: [BLOC](https://medium.com/codechai/architecting-your-flutter-project-bd04e144a8f1) / [Clean architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)
 - build_runner: [Build runner](https://pub.dev/packages/build_runner)
-- retrofit: [Retrofit](https://pub.dev/packages/retrofit)
-- freezed: [Freezed](https://pub.dev/packages/freezed)
 - injectable: [Injectable](https://pub.dev/packages/injectable)
 - get_it: [Get it](https://pub.dev/packages/get_it)
-- auto_route: [Auto route](- hive: [Hive](https://pub.dev/packages/hive) / [Hive Generator](https://pub.dev/packages/hive_generator)
-  https://pub.dev/packages/auto_route)
 
 # 📐 Structure and Architecture
 
@@ -45,42 +41,9 @@ Digital banking Neo Bank.
           extension/
           helper/
     features/
-          account_opening/       
-          balance_inquiry/       
-          base/       
-          bill_payment/       
-          bill_payment_by_id/       
-          biometric_activation/       
-          card_activation/       
-          card_ban/       
-          change_password/       
-          change_username/       
-          connection_failed/       
-          deposit_card_account_list/       
-          deposit_detail_inquiry/       
-          intro/       
-          login/       
-          mobile_bill_payment/       
-          password_management/       
-          receipt/       
-          register/   
-          report_statement/    
-          reports/
-                card_transaction_history/
-                transaction_history/
-          splash/
-          transfer/
-                ach_transfer/
-                card_transfer/
-                card_transfer_to_deposit/
-                deposit_transfer/
-                pol_transfer/
-                rtgs_transfer/
-          utility_features/
-                        app_version/
-                        banks_info/
-                        nearby_branches/
-                        user_info/
+          create_barcode/       
+          home_page/       
+          scan_barcode/
                        
            
                 
@@ -102,16 +65,6 @@ Digital banking Neo Bank.
 **presentation**: includes all feature pages and presentation base classes.
 
 **l10n**: includes strings in different language.
-
-# 🛠 Build command used
-- flutter build apk --flavor prod -t lib/main_prod.dart
-- flutter build appbundle --flavor prod -t lib/main_prod.dart
-
-- flutter build apk --flavor stage -t lib/main_stage.dart
-- flutter build appbundle --flavor stage -t lib/main_stage.dart
-
-- flutter build apk --flavor dev -t lib/main_dev.dart
-- flutter build appbundle --flavor dev -t lib/main_dev.dart
 
 - flutter pub run build_runner build --delete-conflicting-outputs
 

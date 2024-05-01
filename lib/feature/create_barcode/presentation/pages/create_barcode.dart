@@ -198,6 +198,7 @@ class CreateBarcodePage extends StatelessWidget {
                         }
                         qrDecoration = PrettyQrDecoration(
                           image: imageDecoration,
+                          background: Theme.of(context).background,
                           shape: PrettyQrSmoothSymbol(
                             color: barcodeOptions.color ?? barcodeColor,
                           ),

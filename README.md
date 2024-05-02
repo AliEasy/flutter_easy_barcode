@@ -51,6 +51,7 @@ Digital banking Neo Bank.
 
 # 🏳 Highly Used Commands
 - flutter pub run build_runner build --delete-conflicting-outputs
+- flutter gen-l10n
 
 
 # 📚 Acknowledgements

@@ -42,23 +42,14 @@ Digital banking Neo Bank.
                 
 ```
 
-**core**: includes error hand-long, general use-cases ....
-* **base** : includes all extension.
-* **common** : includes all extension.
-* **config** : includes all extension.
-* **di** : includes dependency injection related files.
-* **encryption** : includes dependency injection related files.
-* **search** : includes dependency injection related files.
-* **service** : includes dependency injection related files.
-* **share**: includes all regex, ....
-* **uikit**: includes widgets, general ui component, styles, colors, ....
+**core**: Includes general and base helpers, ...
+**data**: Includes data sources, models, ...
+**domain**: Include use-cases, entities, ...
+**presentation**: Includes all feature pages and presentation base classes, ...
+**l10n**: Includes strings in different language.
 
-**data**: includes data sources, models.
-**domain**: is clean architecture domain layout (include use-cases, entities, ...).
-**presentation**: includes all feature pages and presentation base classes.
 
-**l10n**: includes strings in different language.
-
+**Common Used Commands**
 - flutter pub run build_runner build --delete-conflicting-outputs
 
 # 📚 Acknowledgements

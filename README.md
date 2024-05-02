@@ -43,14 +43,20 @@ Digital banking Neo Bank.
 ```
 
 **core**: Includes general and base helpers, ...
+
 **data**: Includes data sources, models, ...
+
 **domain**: Include use-cases, entities, ...
+
 **presentation**: Includes all feature pages and presentation base classes, ...
+
 **l10n**: Includes strings in different language.
+
 
 
 **Common Used Commands**
 - flutter pub run build_runner build --delete-conflicting-outputs
+
 
 # 📚 Acknowledgements
 

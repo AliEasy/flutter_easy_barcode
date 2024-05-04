@@ -1,4 +1,4 @@
-package top.easydevstudio.easybarcode
+package top.easyware.easybarcode
 
 import io.flutter.embedding.android.FlutterActivity
 

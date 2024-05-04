@@ -38,7 +38,7 @@ if (androidTargetSdkVersion == null) {
 }
 
 android {
-    namespace "top.easydevstudio.easybarcode"
+    namespace "top.easyware.easybarcode"
     compileSdkVersion androidCompileSdkVersion
     ndkVersion flutter.ndkVersion
 
@@ -57,7 +57,7 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId "top.easydevstudio.easybarcode"
+        applicationId "top.easyware.easybarcode"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
         minSdkVersion androidMinSdkVersion

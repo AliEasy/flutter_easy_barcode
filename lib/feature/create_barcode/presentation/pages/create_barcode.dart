@@ -5,7 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easy_barcode/core/config/theme/theme.dart';
 import 'package:flutter_easy_barcode/core/di/base/di_setup.dart';
-import 'package:image_picker/image_picker.dart';
+// import 'package:image_picker/image_picker.dart';
 import 'package:pretty_qr_code/pretty_qr_code.dart';
 import 'package:share_plus/share_plus.dart';
 
@@ -316,11 +316,11 @@ class CreateBarcodePage extends StatelessWidget {
     return newColor;
   }
 
-  Future<Uint8List?> _pickImage() async {
-    final ImagePicker picker = ImagePicker();
-    final XFile? image = await picker.pickImage(source: ImageSource.gallery);
-    return await image?.readAsBytes();
-  }
+  // Future<Uint8List?> _pickImage() async {
+  //   final ImagePicker picker = ImagePicker();
+  //   final XFile? image = await picker.pickImage(source: ImageSource.gallery);
+  //   return await image?.readAsBytes();
+  // }
 
   Future<Uint8List?> _exportImage(String data, PrettyQrDecoration decoration) async {
     final qrCode = QrCode.fromData(

@@ -12,7 +12,7 @@ if (localPropertiesFile.exists()) {
     }
 }
 
-def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
+def flutterVersionCode = localProperties.getProperty('flutter.versionCode').toInteger()
 if (flutterVersionCode == null) {
     flutterVersionCode = '1'
 }
@@ -22,9 +22,24 @@ if (flutterVersionName == null) {
     flutterVersionName = '1.0'
 }
 
+def androidCompileSdkVersion = localProperties.getProperty('android.compileSdkVersion').toInteger()
+if (androidCompileSdkVersion == null) {
+    androidCompileSdkVersion = '1'
+}
+
+def androidMinSdkVersion = localProperties.getProperty('android.minSdkVersion').toInteger()
+if (androidMinSdkVersion == null) {
+    androidMinSdkVersion = '1'
+}
+
+def androidTargetSdkVersion = localProperties.getProperty('android.targetSdkVersion').toInteger()
+if (androidTargetSdkVersion == null) {
+    androidTargetSdkVersion = '1'
+}
+
 android {
-    namespace "com.easytech.easybarcode.flutter_easy_barcode"
-    compileSdkVersion 34
+    namespace "top.easydevstudio.easybarcode"
+    compileSdkVersion androidCompileSdkVersion
     ndkVersion flutter.ndkVersion
 
     compileOptions {
@@ -45,9 +60,9 @@ android {
         applicationId "com.easytech.easybarcode.flutter_easy_barcode"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
-        minSdkVersion 21
-        targetSdkVersion 34
-        versionCode flutterVersionCode.toInteger()
+        minSdkVersion androidMinSdkVersion
+        targetSdkVersion androidTargetSdkVersion
+        versionCode flutterVersionCode
         versionName flutterVersionName
     }
 

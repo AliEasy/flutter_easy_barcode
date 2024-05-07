@@ -50,7 +50,7 @@ This application has been developed and published to provide a sample code, and 
 
 
 # 🏳 Highly Used Commands
-```http
+```bash
    flutter pub run build_runner build --delete-conflicting-outputs
    flutter gen-l10n
 ```

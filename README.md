@@ -1,6 +1,6 @@
 
 # 🌍 About Project - EasyBarcode
-This application has been developed and published to provide a sample code, and continuing its development is recreational. Any PR is accepted though
+This application has been developed and published to provide a sample code, and continuing its development is recreational. Any PR is accepted though :)
 
 # 🛠 Built With
 - platform/ language: [Flutter / Dart](https://docs.flutter.dev/)

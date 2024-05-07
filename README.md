@@ -50,8 +50,10 @@ This application has been developed and published to provide a sample code, and 
 
 
 # 🏳 Highly Used Commands
-- flutter pub run build_runner build --delete-conflicting-outputs
-- flutter gen-l10n
+```http
+   flutter pub run build_runner build --delete-conflicting-outputs
+   flutter gen-l10n
+```
 
 
 # 📚 Acknowledgements
@@ -61,7 +63,3 @@ This application has been developed and published to provide a sample code, and 
 - [Modularization in flutter](https://medium.com/flutter-community/mastering-flutter-modularization-in-several-ways-f5bced19101a)
 - [Dependency injection with get it](https://pub.dev/packages/get_it)
 - [Bloc Architecture in flutter](https://medium.com/codechai/architecting-your-flutter-project-bd04e144a8f1)
-
-# 📱 Screenshots
-[<img src="assets%2Fscreenshot%2Fsc_1.png" width="200" height="400"/>](image.png)
-[<img src="assets%2Fscreenshot%2Fsc_2.png" width="200" height="400"/>](image.png)

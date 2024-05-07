@@ -52,6 +52,8 @@ This application has been developed and published to provide a sample code, and 
 # 🏳 Highly Used Commands
 ```bash
    flutter pub run build_runner build --delete-conflicting-outputs
+```
+```bash
    flutter gen-l10n
 ```
 

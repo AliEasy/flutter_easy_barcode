@@ -2,9 +2,6 @@
 # 🌍 About Project - EasyBarcode
 This application has been developed and published to provide a sample code, and continuing its development is recreational. Any PR is accepted though :)
 
-# 📱 Screenshots
-![app_icon.png](assets%2Fapp_icon%2Fapp_icon.png)
-
 # 🛠 Built With
 - platform/ language: [Flutter / Dart](https://docs.flutter.dev/)
 - state manager: [BLOC](https://bloclibrary.dev/#/)
@@ -64,3 +61,6 @@ This application has been developed and published to provide a sample code, and 
 - [Modularization in flutter](https://medium.com/flutter-community/mastering-flutter-modularization-in-several-ways-f5bced19101a)
 - [Dependency injection with get it](https://pub.dev/packages/get_it)
 - [Bloc Architecture in flutter](https://medium.com/codechai/architecting-your-flutter-project-bd04e144a8f1)
+
+# 📱 Screenshots
+![sc_1.png](assets%2Fscreenshot%2Fsc_1.png)![sc_2.png](assets%2Fscreenshot%2Fsc_2.png)

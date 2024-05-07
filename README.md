@@ -2,6 +2,9 @@
 # 🌍 About Project - EasyBarcode
 This application has been developed and published to provide a sample code, and continuing its development is recreational. Any PR is accepted though :)
 
+# 📱 Screenshots
+![app_icon.png](assets%2Fapp_icon%2Fapp_icon.png)
+
 # 🛠 Built With
 - platform/ language: [Flutter / Dart](https://docs.flutter.dev/)
 - state manager: [BLOC](https://bloclibrary.dev/#/)

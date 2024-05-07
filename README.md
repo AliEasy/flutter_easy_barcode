@@ -63,5 +63,5 @@ This application has been developed and published to provide a sample code, and 
 - [Bloc Architecture in flutter](https://medium.com/codechai/architecting-your-flutter-project-bd04e144a8f1)
 
 # 📱 Screenshots
-[<img src="assets%2Fscreenshot%2Fsc_1.png" width="100" height="250"/>](image.png)
-[<img src="assets%2Fscreenshot%2Fsc_2.png" width="100" height="250"/>](image.png)
+[<img src="assets%2Fscreenshot%2Fsc_1.png" width="200" height="300"/>](image.png)
+[<img src="assets%2Fscreenshot%2Fsc_2.png" width="200" height="300"/>](image.png)

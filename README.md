@@ -56,6 +56,9 @@ This application has been developed and published to provide a sample code, and 
 ```bash
    flutter gen-l10n
 ```
+```bash
+   flutter build appbundle
+```
 
 
 # 📚 Acknowledgements

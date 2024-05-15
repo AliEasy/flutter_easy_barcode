@@ -9,14 +9,8 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'core/config/locale/locale.dart';
 
-void main() {
-  WidgetsFlutterBinding.ensureInitialized();
-  configureDependencies();
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class EasyBarcodeApp extends StatelessWidget {
+  const EasyBarcodeApp({super.key});
 
   @override
   Widget build(BuildContext context) {

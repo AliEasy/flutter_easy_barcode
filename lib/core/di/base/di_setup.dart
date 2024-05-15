@@ -7,11 +7,3 @@ final getIt = GetIt.instance;
 
 @InjectableInit()
 void configureDependencies() => getIt.init();
-
-// @module
-// abstract class RegisterModule {
-//   @lazySingleton
-//   Dio get dio => Dio();
-// }
-
-// class $RegisterModule extends RegisterModule {}

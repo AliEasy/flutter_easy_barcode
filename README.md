@@ -68,3 +68,7 @@ This application has been developed and published to provide a sample code, and 
 - [Modularization in flutter](https://medium.com/flutter-community/mastering-flutter-modularization-in-several-ways-f5bced19101a)
 - [Dependency injection with get it](https://pub.dev/packages/get_it)
 - [Bloc Architecture in flutter](https://medium.com/codechai/architecting-your-flutter-project-bd04e144a8f1)
+
+# 📢 Published Markets
+
+[Cafe Bazaar](https://cafebazaar.ir/app/top.easyware.easybarcode?l=en)

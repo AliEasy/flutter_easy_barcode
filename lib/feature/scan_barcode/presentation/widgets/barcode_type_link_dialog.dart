@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_easy_barcode/core/extension.dart';
+import 'package:flutter_easy_barcode/generated/l10n.dart';
 
 import '../../../../core/enum.dart';
-import '../../../../core/localization.dart';
 import '../../../../core/navigator.dart';
 import '../../../../core/opener.dart';
 import '../../../../core/ui_constants.dart';
@@ -33,7 +33,7 @@ class BarcodeTypeLinkDialog extends StatelessWidget {
               width: 10,
             ),
             Text(
-              Strings.instance.appLocalization.link,
+              S.current.link,
               style: Theme.of(context)
                   .textTheme
                   .titleMedium
@@ -84,7 +84,7 @@ class BarcodeTypeLinkDialog extends StatelessWidget {
                 width: 5,
               ),
               Text(
-                Strings.instance.appLocalization.openLinkInBrowser,
+                S.current.openLinkInBrowser,
               ),
             ],
           ),
@@ -95,7 +95,7 @@ class BarcodeTypeLinkDialog extends StatelessWidget {
             if (!context.mounted) return;
             CustomToasts.successToast(
                 context: context,
-                message: Strings.instance.appLocalization.linkCopied);
+                message: S.current.linkCopied);
             popPage(context);
           },
           child: Row(
@@ -108,7 +108,7 @@ class BarcodeTypeLinkDialog extends StatelessWidget {
                 width: 5,
               ),
               Text(
-                Strings.instance.appLocalization.copyLink,
+                S.current.copyLink,
               ),
             ],
           ),

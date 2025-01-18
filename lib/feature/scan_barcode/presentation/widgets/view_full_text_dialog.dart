@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_easy_barcode/core/navigator.dart';
+import 'package:flutter_easy_barcode/generated/l10n.dart';
 
-import '../../../../core/localization.dart';
 import '../../../../core/ui_constants.dart';
 
 class ViewFullTextDialog extends StatelessWidget {
@@ -36,7 +36,7 @@ class ViewFullTextDialog extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                Strings.instance.appLocalization.close,
+                S.current.close,
               ),
             ],
           ),

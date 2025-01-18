@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_easy_barcode/core/config/locale/locale.dart';
 import 'package:flutter_easy_barcode/core/config/theme/theme.dart';
 import 'package:flutter_easy_barcode/core/di/base/di_setup.dart';
-import 'package:flutter_easy_barcode/core/localization.dart';
 import 'package:flutter_easy_barcode/core/service/language_theme/language_theme_bloc.dart';
 import 'package:flutter_easy_barcode/feature/home_page/presentation/pages/home.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_easy_barcode/generated/l10n.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
-import 'core/config/locale/locale.dart';
 
 class EasyBarcodeApp extends StatelessWidget {
   const EasyBarcodeApp({super.key});
@@ -25,17 +25,20 @@ class EasyBarcodeApp extends StatelessWidget {
         builder: (context, state) {
           return MaterialApp(
             onGenerateTitle: (context) {
-              return AppLocalizations.of(context)!.appTitle;
+              return S.of(context).appTitle;
             },
             theme: context.read<LanguageThemeBloc>().themeData,
             home: const HomePage(),
-            localizationsDelegates: AppLocalizations.localizationsDelegates,
-            supportedLocales: AppLocalizations.supportedLocales,
+            localizationsDelegates: const [
+              S.delegate,
+              GlobalMaterialLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+            ],
+            supportedLocales: const [
+              Locale('fa'),
+            ],
             debugShowCheckedModeBanner: false,
-            builder: (context, child) {
-              Strings.instance.setLocalization(context);
-              return child!;
-            },
           );
         },
       ),

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_easy_barcode/generated/l10n.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 
 import '../../../../core/common/util/permission_handler.dart';
 import '../../../../core/di/base/di_setup.dart';
-import '../../../../core/localization.dart';
 import '../../../../core/opener.dart';
 import '../../../../core/uikit/dialog/dialog.dart';
 import '../../../../core/uikit/dialog/permission/camera_permission_dialog.dart';
@@ -105,7 +105,7 @@ class ScanBarcodePage extends StatelessWidget {
                   right: 0,
                   left: 0,
                   child: Text(
-                    Strings.instance.appLocalization.scanBarcode,
+                    S.current.scanBarcode,
                     style: Theme.of(context)
                         .textTheme
                         .titleLarge

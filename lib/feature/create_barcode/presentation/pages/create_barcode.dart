@@ -5,12 +5,12 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easy_barcode/core/config/theme/theme.dart';
 import 'package:flutter_easy_barcode/core/di/base/di_setup.dart';
+import 'package:flutter_easy_barcode/generated/l10n.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:pretty_qr_code/pretty_qr_code.dart';
 import 'package:share_plus/share_plus.dart';
 
 import '../../../../core/common/util/assets_app_icon_handler.dart';
-import '../../../../core/localization.dart';
 import '../../../../core/uikit/icon_button/icon_button_widget.dart';
 import '../../../../core/uikit/spacing.dart';
 import '../../../../core/uikit/switch/switch_widget.dart';
@@ -31,7 +31,7 @@ class CreateBarcodePage extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           title: Text(
-            Strings.instance.appLocalization.createBarcode,
+            S.current.createBarcode,
           ),
           leading: IconButtonWidget(
             icon: Icons.done_rounded,
@@ -49,8 +49,8 @@ class CreateBarcodePage extends StatelessWidget {
                 child: Column(
                   children: [
                     TextFormFieldWidget(
-                      labelText: Strings.instance.appLocalization.text,
-                      hintText: Strings.instance.appLocalization.enterBarcodeText,
+                      labelText: S.current.text,
+                      hintText: S.current.enterBarcodeText,
                       autoFocus: true,
                       listener: (value) {
                         context.read<CreateBarcodeBloc>().add(
@@ -68,12 +68,12 @@ class CreateBarcodePage extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              Strings.instance.appLocalization.barcodeColor,
+                              S.current.barcodeColor,
                               style: Theme.of(context).textTheme.labelLarge,
                             ),
                             Space.h2,
                             Text(
-                              Strings.instance.appLocalization.chooseBarcodeColorHint,
+                              S.current.chooseBarcodeColorHint,
                               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                                     color: Theme.of(context).neutral[700],
                                   ),
@@ -109,7 +109,7 @@ class CreateBarcodePage extends StatelessWidget {
                     ),
                     Space.h16,
                     SwitchButton(
-                      title: Strings.instance.appLocalization.centralImage,
+                      title: S.current.centralImage,
                       onChanged: (value) async {
                         if (value) {
                           final ByteData bytes = await rootBundle.load(
@@ -147,12 +147,12 @@ class CreateBarcodePage extends StatelessWidget {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      Strings.instance.appLocalization.chooseCentralImage,
+                                      S.current.chooseCentralImage,
                                       style: Theme.of(context).textTheme.labelLarge,
                                     ),
                                     Space.h2,
                                     Text(
-                                      Strings.instance.appLocalization.centralImageHint,
+                                      S.current.centralImageHint,
                                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                                             color: Theme.of(context).neutral[700],
                                           ),
@@ -290,7 +290,7 @@ class CreateBarcodePage extends StatelessWidget {
       context,
       initialColor,
       title: Text(
-        Strings.instance.appLocalization.barcodeColor,
+        S.current.barcodeColor,
         style: Theme.of(context).textTheme.titleLarge,
       ),
       width: 40,

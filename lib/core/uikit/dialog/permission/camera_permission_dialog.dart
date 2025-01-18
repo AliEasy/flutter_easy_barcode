@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_easy_barcode/core/config/theme/theme.dart';
+import 'package:flutter_easy_barcode/generated/l10n.dart';
 
 import '../../../common/util/permission_handler.dart';
-import '../../../localization.dart';
 import '../../button/button_widget.dart';
 import '../dialog.dart';
 
@@ -35,7 +35,7 @@ class CameraPermissionDialog extends StatelessWidget {
             width: 10,
           ),
           Text(
-            Strings.instance.appLocalization.cameraPermission,
+            S.current.cameraPermission,
             style: Theme.of(context).textTheme.titleMedium?.copyWith(
                   color: Theme.of(context).primary,
                 ),
@@ -43,7 +43,7 @@ class CameraPermissionDialog extends StatelessWidget {
         ],
       ),
       content: Text(
-        Strings.instance.appLocalization.cameraPermissionDesc,
+        S.current.cameraPermissionDesc,
         style: Theme.of(context).textTheme.labelLarge,
       ),
       actions: [
@@ -53,7 +53,7 @@ class CameraPermissionDialog extends StatelessWidget {
             Expanded(
               child: ButtonWidget(
                 buttonType: ButtonWidgetType.dialog,
-                title: Strings.instance.appLocalization.continueLabel,
+                title: S.current.continueLabel,
                 backgroundColor: Theme.of(context).primary,
                 textStyle: Theme.of(context).textTheme.labelMedium?.copyWith(
                       color: Theme.of(context).background,
@@ -69,7 +69,7 @@ class CameraPermissionDialog extends StatelessWidget {
             Expanded(
               child: ButtonWidget(
                 buttonType: ButtonWidgetType.dialog,
-                title: Strings.instance.appLocalization.cancel,
+                title: S.current.cancel,
                 textStyle: Theme.of(context).textTheme.labelMedium?.copyWith(
                       color: Theme.of(context).neutral.shade800,
                     ),

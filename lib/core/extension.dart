@@ -1,19 +1,19 @@
 import 'package:flutter_easy_barcode/core/enum.dart';
-import 'package:flutter_easy_barcode/core/localization.dart';
+import 'package:flutter_easy_barcode/generated/l10n.dart';
 
 extension OnCustomOpenerResult on CustomOpenerResult {
   String toHumanReadable() {
     switch (this) {
       case CustomOpenerResult.empty:
-        return Strings.instance.appLocalization.linkNotDefined;
+        return S.current.linkNotDefined;
       case CustomOpenerResult.invalid:
-        return Strings.instance.appLocalization.linkIsInvalid;
+        return S.current.linkIsInvalid;
       case CustomOpenerResult.problem:
-        return Strings.instance.appLocalization.problemInOpeningLinks;
+        return S.current.problemInOpeningLinks;
       case CustomOpenerResult.error:
-        return Strings.instance.appLocalization.errorInOpeningLinks;
+        return S.current.errorInOpeningLinks;
       case CustomOpenerResult.success:
-        return Strings.instance.appLocalization.successOperation;
+        return S.current.successOperation;
     }
   }
 }

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easy_barcode/core/config/theme/theme.dart';
+import 'package:flutter_easy_barcode/generated/l10n.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../../core/common/util/assets_svg_helper.dart';
-import '../../../../core/localization.dart';
 import '../../domain/entity/home_page_navigation_menu_type.dart';
 import '../manager/home_navigation_bloc.dart';
 
@@ -42,7 +42,7 @@ class HomeBottomNavigationBar extends StatelessWidget {
                 width: 25,
                 colorFilter: ColorFilter.mode(Theme.of(context).primary, BlendMode.srcIn),
               ),
-              label: Strings.instance.appLocalization.scanBarcode,
+              label: S.current.scanBarcode,
             ),
             NavigationDestination(
               icon: SvgPicture.asset(
@@ -57,7 +57,7 @@ class HomeBottomNavigationBar extends StatelessWidget {
                 width: 20,
                 colorFilter: ColorFilter.mode(Theme.of(context).primary, BlendMode.srcIn),
               ),
-              label: Strings.instance.appLocalization.createBarcode,
+              label: S.current.createBarcode,
             ),
           ],
         );

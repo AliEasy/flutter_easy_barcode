@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_easy_barcode/core/extension.dart';
+import 'package:flutter_easy_barcode/generated/l10n.dart';
 import '../../../../core/enum.dart';
-import '../../../../core/localization.dart';
 import '../../../../core/navigator.dart';
 import '../../../../core/opener.dart';
 import '../../../../core/ui_constants.dart';
@@ -35,7 +35,7 @@ class BarcodeTypePhoneDialog extends StatelessWidget {
                     width: 10,
                   ),
                   Text(
-                    Strings.instance.appLocalization.callNumber,
+                    S.current.callNumber,
                     style: Theme.of(context)
                         .textTheme
                         .titleMedium
@@ -99,7 +99,7 @@ class BarcodeTypePhoneDialog extends StatelessWidget {
                 width: 5,
               ),
               Text(
-                Strings.instance.appLocalization.dialCallNumber,
+                S.current.dialCallNumber,
               ),
             ],
           ),
@@ -110,7 +110,7 @@ class BarcodeTypePhoneDialog extends StatelessWidget {
             if (!context.mounted) return;
             CustomToasts.successToast(
                 context: context,
-                message: Strings.instance.appLocalization.linkCopied);
+                message: S.current.linkCopied);
             popPage(context);
           },
           child: Row(
@@ -123,7 +123,7 @@ class BarcodeTypePhoneDialog extends StatelessWidget {
                 width: 5,
               ),
               Text(
-                Strings.instance.appLocalization.copyCallNumber,
+                S.current.copyCallNumber,
               ),
             ],
           ),

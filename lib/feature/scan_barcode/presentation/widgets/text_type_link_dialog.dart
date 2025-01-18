@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_easy_barcode/feature/scan_barcode/presentation/widgets/view_full_text_dialog.dart';
+import 'package:flutter_easy_barcode/generated/l10n.dart';
 
-import '../../../../core/localization.dart';
 import '../../../../core/navigator.dart';
 import '../../../../core/ui_constants.dart';
 import '../../../../core/uikit/dialog/dialog.dart';
@@ -35,7 +35,7 @@ class BarcodeTypeTextDialog extends StatelessWidget {
                     width: 10,
                   ),
                   Text(
-                    Strings.instance.appLocalization.text,
+                    S.current.text,
                     style: Theme.of(context)
                         .textTheme
                         .titleMedium
@@ -97,7 +97,7 @@ class BarcodeTypeTextDialog extends StatelessWidget {
                 width: 5,
               ),
               Text(
-                Strings.instance.appLocalization.viewFullText,
+                S.current.viewFullText,
               ),
             ],
           ),
@@ -108,7 +108,7 @@ class BarcodeTypeTextDialog extends StatelessWidget {
             if (!context.mounted) return;
             CustomToasts.successToast(
                 context: context,
-                message: Strings.instance.appLocalization.linkCopied);
+                message: S.current.linkCopied);
             popPage(context);
           },
           child: Row(
@@ -121,7 +121,7 @@ class BarcodeTypeTextDialog extends StatelessWidget {
                 width: 5,
               ),
               Text(
-                Strings.instance.appLocalization.copyText,
+                S.current.copyText,
               ),
             ],
           ),

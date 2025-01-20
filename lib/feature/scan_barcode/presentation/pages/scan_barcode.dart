@@ -8,7 +8,7 @@ import '../../../../core/di/base/di_setup.dart';
 import '../../../../core/opener.dart';
 import '../../../../core/uikit/dialog/dialog.dart';
 import '../../../../core/uikit/dialog/permission/camera_permission_dialog.dart';
-import '../../../home_page/presentation/manager/home_navigation_bloc.dart';
+import '../../../home_page/presentation/manager/home_navigation/home_navigation_bloc.dart';
 import '../manager/scan_barcode/scan_barcode_bloc.dart';
 import '../widgets/barcode_type_link_dialog.dart';
 import '../widgets/phone_type_link_dialog.dart';
@@ -84,7 +84,7 @@ class ScanBarcodePage extends StatelessWidget {
                 await CustomOpener.openSms(state.phoneNumber, state.smsBody);
                 if (!context.mounted) return;
                 context.read<ScanBarcodeBloc>().add(const ScanBarcodeResetEvent());
-              } else if (state is ScanBarcodeAsEmptyState) {}
+              }
             },
             child: Stack(
               children: [

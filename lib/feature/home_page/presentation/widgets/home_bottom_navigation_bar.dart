@@ -6,7 +6,7 @@ import 'package:flutter_svg/svg.dart';
 
 import '../../../../core/common/util/assets_svg_helper.dart';
 import '../../domain/entity/home_page_navigation_menu_type.dart';
-import '../manager/home_navigation_bloc.dart';
+import '../manager/home_navigation/home_navigation_bloc.dart';
 
 class HomeBottomNavigationBar extends StatelessWidget {
   const HomeBottomNavigationBar({super.key});

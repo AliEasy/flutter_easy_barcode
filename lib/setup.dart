@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'core/di/base/di_setup.dart';
 
-void setupApp() {
+Future<void> setupApp() async {
   WidgetsFlutterBinding.ensureInitialized();
-  configureDependencies();
+  await configureDependencies();
 }

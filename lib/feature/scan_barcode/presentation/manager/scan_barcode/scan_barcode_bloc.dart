@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_easy_barcode/core/storage/shared_preferences/shared_preferences_storage.dart';
 import 'package:injectable/injectable.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 
@@ -9,7 +10,9 @@ part 'scan_barcode_state.dart';
 
 @injectable
 class ScanBarcodeBloc extends Bloc<ScanBarcodeEvent, ScanBarcodeState> {
-  ScanBarcodeBloc() : super(ScanBarcodeInitial()) {
+  final SharedPreferencesStorage _sharedPreferencesStorage;
+
+  ScanBarcodeBloc(this._sharedPreferencesStorage) : super(ScanBarcodeInitial()) {
     on<ScanBarcodeStartCameraEvent>(_onScanBarcodeStartCameraEvent);
     on<ScanBarcodeDetectedEvent>(_onScanBarcodeDetectedEvent);
     on<ScanBarcodeResetEvent>(_onScanBarcodeResetEvent);
@@ -25,12 +28,15 @@ class ScanBarcodeBloc extends Bloc<ScanBarcodeEvent, ScanBarcodeState> {
       var barcode = barcodes.first;
       switch (barcode.type) {
         case BarcodeType.url:
+          _sharedPreferencesStorage.usedApplicationOnceSetter();
           emit(ScanBarcodeAsLinkState(link: barcode.rawValue!));
           break;
         case BarcodeType.text:
+          _sharedPreferencesStorage.usedApplicationOnceSetter();
           emit(ScanBarcodeAsTextState(text: barcode.rawValue!));
           break;
         case BarcodeType.phone:
+          _sharedPreferencesStorage.usedApplicationOnceSetter();
           emit(
             ScanBarcodeAsPhoneState(
               phoneNumber: barcode.phone!.number ?? '',
@@ -38,6 +44,7 @@ class ScanBarcodeBloc extends Bloc<ScanBarcodeEvent, ScanBarcodeState> {
           );
           break;
         case BarcodeType.sms:
+          _sharedPreferencesStorage.usedApplicationOnceSetter();
           emit(
             ScanBarcodeAsSmsState(
               phoneNumber: barcode.sms!.phoneNumber,

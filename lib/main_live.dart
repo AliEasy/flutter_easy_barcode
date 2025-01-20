@@ -4,9 +4,9 @@ import 'package:flutter_easy_barcode/setup.dart';
 
 import 'easy_barcode.dart';
 
-void main() {
+void main() async {
   environment = LiveEnv();
-  setupApp();
+  await setupApp();
 
   runApp(const EasyBarcodeApp());
 }

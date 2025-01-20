@@ -3,6 +3,7 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter_easy_barcode/core/storage/shared_preferences/shared_preferences_storage.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../domain/entity/barcode_options.dart';
@@ -14,8 +15,9 @@ part 'create_barcode_state.dart';
 @injectable
 class CreateBarcodeBloc extends Bloc<CreateBarcodeEvent, CreateBarcodeState> {
   final BarcodeOptions _barcodeOptions = BarcodeOptions(value: '');
+  final SharedPreferencesStorage _sharedPreferencesStorage;
 
-  CreateBarcodeBloc()
+  CreateBarcodeBloc(this._sharedPreferencesStorage)
       : super(
           CreateBarcodeInitialState(
             barcodeOptions: BarcodeOptions(value: ''),
@@ -36,6 +38,7 @@ class CreateBarcodeBloc extends Bloc<CreateBarcodeEvent, CreateBarcodeState> {
       _barcodeOptions.hasCentralImage = event.hasCentralImage!;
       _barcodeOptions.centralImage = event.centralImage;
     }
+    _sharedPreferencesStorage.usedApplicationOnceSetter();
     emit(CreateBarcodeUpdatedState(barcodeOptions: _barcodeOptions));
   }
 }

@@ -51,33 +51,38 @@ class CameraPermissionDialog extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Expanded(
-              child: ButtonWidget(
-                buttonType: ButtonWidgetType.dialog,
-                title: S.current.continueLabel,
-                backgroundColor: Theme.of(context).primary,
-                textStyle: Theme.of(context).textTheme.labelMedium?.copyWith(
-                      color: Theme.of(context).background,
-                    ),
-                borderRadius: const BorderRadius.all(Radius.circular(0)),
-                onTap: () async {
+              child: ButtonWidget.dialog(
+                onPressed: () async {
                   await PermissionHandler.cameraPermissionRequest();
                   if (!context.mounted) return;
                   Navigator.pop(context);
                 },
+                label: S.current.continueLabel,
+                buttonColor: ButtonColor.primary,
+                // backgroundColor: Theme.of(context).primary,
+                // textStyle: Theme.of(context).textTheme.labelMedium?.copyWith(
+                //       color: Theme.of(context).background,
+                //     ),
+                // borderRadius: const BorderRadius.all(Radius.circular(0)),
               ),
             ),
             Expanded(
-              child: ButtonWidget(
-                buttonType: ButtonWidgetType.dialog,
-                title: S.current.cancel,
-                textStyle: Theme.of(context).textTheme.labelMedium?.copyWith(
-                      color: Theme.of(context).neutral.shade800,
-                    ),
-                borderRadius: const BorderRadius.all(Radius.circular(0)),
-                backgroundColor: Theme.of(context).background.shade900,
-                onTap: () {
+              child: ButtonWidget.dialog(
+                onPressed: () async {
                   Navigator.pop(context);
                 },
+                label: S.current.cancel,
+                buttonColor: ButtonColor.secondary,
+                // buttonType: ButtonWidgetType.dialog,
+                // title: S.current.cancel,
+                // textStyle: Theme.of(context).textTheme.labelMedium?.copyWith(
+                //       color: Theme.of(context).neutral.shade800,
+                //     ),
+                // borderRadius: const BorderRadius.all(Radius.circular(0)),
+                // backgroundColor: Theme.of(context).background.shade900,
+                // onTap: () {
+                //   Navigator.pop(context);
+                // },
               ),
             ),
           ],

@@ -99,7 +99,7 @@ class ButtonWidget extends StatelessWidget {
           gradiantColors = [Theme.of(context).colorScheme.tertiaryContainer, Theme.of(context).colorScheme.tertiaryContainer];
         }
       } else if (buttonColor == ButtonColor.secondary) {
-        gradiantColors = [Theme.of(context).colorScheme.tertiaryContainer.withOpacity(.5), Theme.of(context).colorScheme.tertiaryContainer.withOpacity(.5)];
+        gradiantColors = [Theme.of(context).colorScheme.tertiaryContainer.withValues(alpha: .5), Theme.of(context).colorScheme.tertiaryContainer.withValues(alpha: .5)];
       }
 
       button = AnimatedContainer(
@@ -115,11 +115,11 @@ class ButtonWidget extends StatelessWidget {
         child: ElevatedButton(
           onPressed: onPressed != null
               ? () {
-            if (unFocusOnPress) {
-              FocusScope.of(context).unfocus();
-            }
-            onPressed!();
-          }
+                  if (unFocusOnPress) {
+                    FocusScope.of(context).unfocus();
+                  }
+                  onPressed!();
+                }
               : null,
           style: ElevatedButton.styleFrom(
             shape: RoundedRectangleBorder(
@@ -135,11 +135,11 @@ class ButtonWidget extends StatelessWidget {
       button = TextButton(
         onPressed: onPressed != null
             ? () {
-          if (unFocusOnPress) {
-            FocusScope.of(context).unfocus();
-          }
-          onPressed!();
-        }
+                if (unFocusOnPress) {
+                  FocusScope.of(context).unfocus();
+                }
+                onPressed!();
+              }
             : null,
         style: TextButton.styleFrom(
           shape: RoundedRectangleBorder(
@@ -152,11 +152,11 @@ class ButtonWidget extends StatelessWidget {
       button = OutlinedButton(
         onPressed: onPressed != null
             ? () {
-          if (unFocusOnPress) {
-            FocusScope.of(context).unfocus();
-          }
-          onPressed!();
-        }
+                if (unFocusOnPress) {
+                  FocusScope.of(context).unfocus();
+                }
+                onPressed!();
+              }
             : null,
         style: OutlinedButton.styleFrom(
           shape: RoundedRectangleBorder(
@@ -173,11 +173,11 @@ class ButtonWidget extends StatelessWidget {
       button = TextButton(
         onPressed: onPressed != null
             ? () {
-          if (unFocusOnPress) {
-            FocusScope.of(context).unfocus();
-          }
-          onPressed!();
-        }
+                if (unFocusOnPress) {
+                  FocusScope.of(context).unfocus();
+                }
+                onPressed!();
+              }
             : null,
         style: TextButton.styleFrom(
           backgroundColor: Colors.white,
@@ -187,34 +187,7 @@ class ButtonWidget extends StatelessWidget {
         ),
         child: _buttonContent(context),
       );
-    } else if(buttonType == ButtonType.dialog){
-      // return TextButton(
-      //   style: TextButton.styleFrom(
-      //     padding: EdgeInsets.zero,
-      //     backgroundColor: backgroundColor,
-      //     elevation: 0,
-      //     tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-      //     shape: RoundedRectangleBorder(
-      //       borderRadius: borderRadius ??
-      //           BorderRadius.all(
-      //             Radius.circular(
-      //               buttonCorners,
-      //             ),
-      //           ),
-      //     ),
-      //   ),
-      //   clipBehavior: Clip.hardEdge,
-      //   onPressed: onTap?.call,
-      //   child: Row(
-      //     mainAxisAlignment: MainAxisAlignment.center,
-      //     children: [
-      //       Text(
-      //         title ?? '',
-      //         style: textStyle,
-      //       ),
-      //     ],
-      //   ),
-      // );
+    } else if (buttonType == ButtonType.dialog) {
       late Color backgroundColor;
       if (buttonColor == ButtonColor.primary) {
         backgroundColor = Theme.of(context).primary;
@@ -224,11 +197,11 @@ class ButtonWidget extends StatelessWidget {
       button = TextButton(
         onPressed: onPressed != null
             ? () {
-          if (unFocusOnPress) {
-            FocusScope.of(context).unfocus();
-          }
-          onPressed!();
-        }
+                if (unFocusOnPress) {
+                  FocusScope.of(context).unfocus();
+                }
+                onPressed!();
+              }
             : null,
         style: TextButton.styleFrom(
           backgroundColor: backgroundColor,
@@ -261,7 +234,7 @@ class ButtonWidget extends StatelessWidget {
     } else if (label?.isNotEmpty ?? false) {
       contentWidget = Text(
         label!,
-        style: Theme.of(context).textTheme.titleMedium?.copyWith(color: buttonColor == ButtonColor.primary ? Colors.white : Colors.black),
+        style: Theme.of(context).textTheme.labelLarge?.copyWith(color: (buttonType == ButtonType.filled) ? Colors.white : Colors.black),
       );
     } else if (content != null) {
       contentWidget = content!;

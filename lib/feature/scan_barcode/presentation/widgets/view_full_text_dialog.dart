@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easy_barcode/core/navigator.dart';
 import 'package:flutter_easy_barcode/generated/l10n.dart';
 
-import '../../../../core/ui_constants.dart';
+import '../../../../core/common/constant/ui_constants.dart';
 
 class ViewFullTextDialog extends StatelessWidget {
   final String text;

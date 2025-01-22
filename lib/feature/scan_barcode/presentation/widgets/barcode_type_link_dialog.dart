@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_easy_barcode/core/extension.dart';
+import 'package:flutter_easy_barcode/core/di/base/di_setup.dart';
 import 'package:flutter_easy_barcode/generated/l10n.dart';
 
-import '../../../../core/enum.dart';
 import '../../../../core/navigator.dart';
 import '../../../../core/opener.dart';
-import '../../../../core/ui_constants.dart';
+import '../../../../core/common/constant/ui_constants.dart';
 import '../../../../core/uikit/toast.dart';
 
 class BarcodeTypeLinkDialog extends StatelessWidget {
@@ -64,7 +63,7 @@ class BarcodeTypeLinkDialog extends StatelessWidget {
         ),
         TextButton(
           onPressed: () async {
-            var result = await CustomOpener.openLink(link);
+            var result = await getIt<CustomOpener>().openLink(link);
             if (!context.mounted) return;
             if (result != CustomOpenerResult.success) {
               CustomToasts.errorToast(

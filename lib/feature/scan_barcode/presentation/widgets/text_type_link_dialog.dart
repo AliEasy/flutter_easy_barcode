@@ -4,7 +4,7 @@ import 'package:flutter_easy_barcode/feature/scan_barcode/presentation/widgets/v
 import 'package:flutter_easy_barcode/generated/l10n.dart';
 
 import '../../../../core/navigator.dart';
-import '../../../../core/ui_constants.dart';
+import '../../../../core/common/constant/ui_constants.dart';
 import '../../../../core/uikit/dialog/dialog.dart';
 import '../../../../core/uikit/toast.dart';
 

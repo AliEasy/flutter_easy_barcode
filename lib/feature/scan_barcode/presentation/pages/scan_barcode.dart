@@ -81,7 +81,7 @@ class ScanBarcodePage extends StatelessWidget {
                 if (!context.mounted) return;
                 context.read<ScanBarcodeBloc>().add(const ScanBarcodeResetEvent());
               } else if (state is ScanBarcodeAsSmsState) {
-                await CustomOpener.openSms(state.phoneNumber, state.smsBody);
+                await getIt<CustomOpener>().openSms(state.phoneNumber, state.smsBody);
                 if (!context.mounted) return;
                 context.read<ScanBarcodeBloc>().add(const ScanBarcodeResetEvent());
               }

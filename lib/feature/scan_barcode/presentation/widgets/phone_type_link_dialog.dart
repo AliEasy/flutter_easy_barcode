@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_easy_barcode/core/extension.dart';
+import 'package:flutter_easy_barcode/core/di/base/di_setup.dart';
 import 'package:flutter_easy_barcode/generated/l10n.dart';
-import '../../../../core/enum.dart';
 import '../../../../core/navigator.dart';
 import '../../../../core/opener.dart';
-import '../../../../core/ui_constants.dart';
+import '../../../../core/common/constant/ui_constants.dart';
 import '../../../../core/uikit/toast.dart';
 
 class BarcodeTypePhoneDialog extends StatelessWidget {
@@ -79,7 +78,7 @@ class BarcodeTypePhoneDialog extends StatelessWidget {
         ),
         TextButton(
           onPressed: () async {
-            var result = await CustomOpener.dialNumber(phoneNumber);
+            var result = await getIt<CustomOpener>().dialNumber(phoneNumber);
             if (!context.mounted) return;
             if (result != CustomOpenerResult.success) {
               CustomToasts.errorToast(

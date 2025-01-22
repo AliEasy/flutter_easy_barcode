@@ -13,7 +13,7 @@ class SharedPreferencesStorage {
     await _prefs.setBool(_usedApplicationOnce, true);
   }
 
-  Future<bool?> usedApplicationOnceGetter() async {
+  bool? usedApplicationOnceGetter() {
     return _prefs.getBool(_usedApplicationOnce);
   }
 
@@ -21,7 +21,7 @@ class SharedPreferencesStorage {
     await _prefs.setBool(_ratedAppOnce, true);
   }
 
-  Future<bool?> ratedAppOnceGetter() async {
+  bool? ratedAppOnceGetter() {
     return _prefs.getBool(_ratedAppOnce);
   }
 }

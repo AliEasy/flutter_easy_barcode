@@ -32,7 +32,6 @@ class DeviceInfo {
 
 @module
 abstract class DeviceInfoModule {
-  @preResolve
   @singleton
   Future<DeviceInfo> provideDeviceInfo() async {
     final deviceInfoPlugin = DeviceInfoPlugin();

@@ -14,10 +14,10 @@ class RateAppBloc extends Bloc<RateAppEvent, RateAppState> {
     add(CheckRatedAppEvent());
   }
 
-  _checkRatedApp(CheckRatedAppEvent event, Emitter<RateAppState> emit) async {
+  _checkRatedApp(CheckRatedAppEvent event, Emitter<RateAppState> emit) {
     emit(RateAppInitialState());
-    final usedApplicationOnce = await _sharedPreferencesStorage.usedApplicationOnceGetter() ?? false;
-    final ratedAppOnce = await _sharedPreferencesStorage.ratedAppOnceGetter() ?? false;
+    final usedApplicationOnce = _sharedPreferencesStorage.usedApplicationOnceGetter() ?? false;
+    final ratedAppOnce = _sharedPreferencesStorage.ratedAppOnceGetter() ?? false;
     if (usedApplicationOnce && !ratedAppOnce) {
       emit(RateAppNotHappenedState());
     }

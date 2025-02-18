@@ -73,6 +73,7 @@ class RateUsWidget extends StatelessWidget {
             onPressed: () async {
               Navigator.pop(context);
             },
+            buttonColor: ButtonColor.secondary,
           ),
         ],
       ),

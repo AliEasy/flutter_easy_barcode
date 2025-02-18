@@ -99,7 +99,7 @@ class ButtonWidget extends StatelessWidget {
           gradiantColors = [Theme.of(context).colorScheme.tertiaryContainer, Theme.of(context).colorScheme.tertiaryContainer];
         }
       } else if (buttonColor == ButtonColor.secondary) {
-        gradiantColors = [Theme.of(context).colorScheme.tertiaryContainer.withValues(alpha: .5), Theme.of(context).colorScheme.tertiaryContainer.withValues(alpha: .5)];
+        gradiantColors = [Theme.of(context).colorScheme.tertiaryContainer.withOpacity(.5), Theme.of(context).colorScheme.tertiaryContainer.withOpacity(.5)];
       }
 
       button = AnimatedContainer(
@@ -234,7 +234,7 @@ class ButtonWidget extends StatelessWidget {
     } else if (label?.isNotEmpty ?? false) {
       contentWidget = Text(
         label!,
-        style: Theme.of(context).textTheme.labelLarge?.copyWith(color: (buttonType == ButtonType.filled) ? Colors.white : Colors.black),
+        style: Theme.of(context).textTheme.labelLarge?.copyWith(color: (buttonColor == ButtonColor.primary) ? Colors.white : Colors.black),
       );
     } else if (content != null) {
       contentWidget = content!;

@@ -17,7 +17,6 @@ dependencies:
   cupertino_icons: 1.0.2
   pretty_qr_code: 3.3.0
   mobile_scanner: 4.0.1
-  camera_platform_interface: 2.6.0
   flutter_native_splash: 2.3.11
   flutter_staggered_animations: 1.1.1
   flutter_svg: 2.0.10+1

@@ -24,6 +24,8 @@ class CreateBarcodePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Color barcodeColor = Theme.of(context).primary;
+    final controller = TextEditingController();
+
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -49,6 +51,7 @@ class CreateBarcodePage extends StatelessWidget {
                 child: Column(
                   children: [
                     TextFormFieldWidget(
+                      controller: controller,
                       labelText: S.current.text,
                       hintText: S.current.enterBarcodeText,
                       autoFocus: true,
@@ -59,6 +62,18 @@ class CreateBarcodePage extends StatelessWidget {
                               ),
                             );
                       },
+                      showClearButton: true,
+                      suffixWidget: Padding(
+                        padding: const EdgeInsets.only(left: 15),
+                        child: IconButtonWidget(
+                          icon: Icons.paste_rounded,
+                          onTap: () async {
+                            final clipboardData = await Clipboard.getData(Clipboard.kTextPlain);
+                            String? clipboardText = clipboardData?.text;
+                            controller.text = clipboardText ?? '';
+                          },
+                        ),
+                      ),
                     ),
                     Space.h16,
                     Row(

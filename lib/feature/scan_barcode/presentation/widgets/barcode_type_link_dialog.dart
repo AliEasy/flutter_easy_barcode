@@ -27,16 +27,35 @@ class BarcodeTypeLinkDialog extends StatelessWidget {
       children: [
         Row(
           children: [
-            const Icon(Icons.qr_code_scanner_rounded),
-            const SizedBox(
-              width: 10,
+            Expanded(
+              child: Row(
+                children: [
+                  const Icon(Icons.qr_code_scanner_rounded, size: 20),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  Text(
+                    S.current.link,
+                    style: Theme.of(context)
+                        .textTheme
+                        .titleMedium
+                        ?.copyWith(color: Colors.black),
+                  ),
+                ],
+              ),
             ),
-            Text(
-              S.current.link,
-              style: Theme.of(context)
-                  .textTheme
-                  .titleMedium
-                  ?.copyWith(color: Colors.black),
+            const SizedBox(
+              width: 15,
+            ),
+            IconButton(
+              icon: const Icon(
+                Icons.close_rounded,
+                size: 20,
+              ),
+              onPressed: () {
+                popPage(context);
+              },
+              splashRadius: 15,
             ),
           ],
         ),
